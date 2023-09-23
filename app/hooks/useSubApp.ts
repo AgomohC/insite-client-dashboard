@@ -5,7 +5,7 @@ export function useSubApp() {
 	const pathname = usePathname()
 	return {
 		active: (path: string) => {
-			return pathname.split("/").includes(path)
+			return pathname.split("/")[1].toLowerCase() === path.toLowerCase()
 		},
 	}
 }

@@ -1,3 +1,4 @@
+"use client"
 import styles from "./List.module.css"
 import cx from "clsx"
 import {
@@ -68,6 +69,9 @@ const listItems = [
 
 interface IItemProps {
 	item: (typeof listItems)[0]
+}
+interface IHeaderProps {
+	btnAction?: () => void
 }
 function List({ children }: IListProps) {
 	return <Stack className={styles.listRoot}>{children}</Stack>
@@ -215,7 +219,7 @@ const data = [
 	{ label: "In Progress", value: "inProgress" },
 	{ label: "Completed", value: "completed" },
 ]
-List.Header = function ListHeader() {
+List.Header = function ListHeader({ btnAction }: IHeaderProps) {
 	const [active, setActive] = useState("inProgress")
 
 	return (
@@ -257,6 +261,11 @@ List.Header = function ListHeader() {
 					label: styles.btnLabel,
 				}}
 				rightSection={<New />}
+				onClick={() => {
+					if (btnAction) {
+						btnAction()
+					}
+				}}
 			>
 				Create New
 			</Button>

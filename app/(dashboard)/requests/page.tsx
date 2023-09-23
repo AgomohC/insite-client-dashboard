@@ -1,9 +1,10 @@
 "use client"
 import PageHeader from "@/app/Components/PageHeader/PageHeader"
 import List from "@/app/Components/List/List"
-import { Flex, Space } from "@mantine/core"
-
+import { Flex } from "@mantine/core"
+import { useRouter } from "next/navigation"
 export default function Page() {
+	const { push } = useRouter()
 	return (
 		<Flex
 			direction='column'
@@ -16,7 +17,7 @@ export default function Page() {
 				subtext='Select preferred criteria for testers'
 			/>
 			<List>
-				<List.Header />
+				<List.Header btnAction={() => push("/requests/create")} />
 				<List.Body />
 			</List>
 		</Flex>
