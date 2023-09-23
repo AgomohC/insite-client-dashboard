@@ -1,0 +1,169 @@
+.listRoot {
+	border-radius: 2.4rem;
+	gap: 2.4rem;
+	width: 100%;
+	background: transparent;
+	border: 0.1rem solid var(--mantine-color-gray-2);
+}
+.bodyRoot {
+	padding: 0 3.2rem 3.2rem;
+}
+.headRoot {
+	border-radius: 2.4rem;
+	width: 100%;
+	background: var(--mantine-color-white);
+	padding: 1.6rem 3.2rem;
+	border-bottom: 0.1rem solid rgba(7, 56, 58, 0.06);
+}
+.itemRoot {
+	padding: 1rem 1.6rem;
+	border-radius: 1.6rem;
+	background: var(--mantine-color-white);
+}
+.img {
+	height: 2.2rem;
+	width: 2.2rem;
+	aspect-ratio: 1/1;
+}
+
+.indicatorRoot {
+	background-color: var(--mantine-color-green-0);
+	border-radius: 50%;
+	height: 0.6rem;
+	width: 0.6rem;
+}
+.indicatorYellow {
+	background-color: var(--mantine-color-yellow-0);
+}
+
+.label {
+	color: var(--mantine-color-brand-7);
+	font-size: 1.4rem;
+	font-weight: 600;
+	letter-spacing: -0.014rem;
+	max-width: 252ch;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.info {
+	padding: 0.4rem;
+	border-radius: 0.8rem;
+	background-color: rgba(var(--mantine-color-brand-9), 0.42);
+	border: 0.03rem solid var(--mantine-color-gray-8);
+}
+.infoTag {
+	padding: 0.5rem 1.6rem;
+	border-right: 0.08rem solid var(--mantine-color-gray-9);
+	gap: 0.8rem;
+}
+.infoTagText {
+	backdrop-filter: blur(1.75rem);
+	color: var(--mantine-color-gray-6);
+	font-size: 1.4rem;
+	line-height: 2rem;
+}
+.infoTagTextAdjust {
+	line-height: 1.82rem;
+	min-width: 6.8rem;
+}
+
+.manual {
+	border-radius: 0.8rem;
+	background-color: var(--mantine-color-brand-8);
+	padding: 0.2rem 0.4rem;
+}
+.avatarContainer {
+	padding: 0.4rem 0.8rem;
+	background: var(--mantine-color-white);
+	border-radius: 0.8rem;
+	box-shadow: 0px 1px 5px 0px rgba(171, 171, 171, 0.25);
+}
+.avatar {
+	position: relative;
+}
+.avatar0 {
+	z-index: 3;
+}
+.avatar1 {
+	z-index: 2;
+}
+.avatar2 {
+	z-index: 1;
+}
+.avatarText {
+	color: var(--mantine-color-brand-5);
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 1.431rem;
+}
+.icons {
+	padding-left: 1.6rem;
+}
+.icon {
+	cursor: pointer;
+	height: 3rem;
+	width: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.iconCircle {
+	border-radius: 50%;
+	border: 0.367px solid rgba(227, 227, 227, 0.94);
+}
+
+.arrow svg {
+	fill: var(--mantine-color-brand-4);
+}
+.btnRoot {
+	border-radius: 5rem;
+	background: var(--mantine-color-brand-4);
+	height: fit-content;
+	padding: 1.2rem 1.6rem;
+}
+.btnInner {
+	gap: 1.2rem;
+}
+.btnIcon {
+	fill: var(--mantine-color-yellow-0);
+	margin-left: 0;
+}
+.btnLabel {
+	color: var(--mantine-color-white);
+	font-size: 1.4rem;
+	font-weight: 500;
+	letter-spacing: -0.28px;
+	line-height: 1.8rem;
+	backdrop-filter: blur(13.93px);
+}
+.tabLinks {
+	border: 0.796px solid rgba(5, 49, 50, 0.1);
+	background: var(--mantine-color-gray-0);
+	border-radius: 5rem;
+	padding: 0.4rem 0.5rem;
+	position: relative;
+}
+.tabLink {
+	border-radius: 5rem;
+	height: 100%;
+	padding: 1.1144rem 1.194rem 0.9552rem 1.3532rem;
+	cursor: pointer;
+	transition: 0.3s all ease;
+}
+.tabLinkText {
+	font-size: 1.4rem;
+	text-align: center;
+	letter-spacing: -0.021rem;
+	color: var(--mantine-color-brand-0);
+	z-index: 3;
+}
+.tabLinkTextActive {
+	color: var(--mantine-color-brand-3);
+	font-weight: 500;
+}
+
+.tabLinkActive {
+	background-color: var(--mantine-color-white);
+}

@@ -1,0 +1,25 @@
+.headerTitle {
+	letter-spacing: -0.144rem;
+	font-size: 3.2rem;
+	font-weight: 700;
+	color: var(--mantine-color-brand-6);
+	display: block;
+	position: relative;
+	line-height: 3.2rem;
+}
+.headerSubtext {
+	color: var(--mantine-color-brand-0);
+	font-size: 1.6rem;
+	line-height: 2rem;
+}
+.headerIcon {
+	position: absolute;
+	top: 0;
+	left: -2rem;
+	padding: 0.8rem 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	cursor: pointer;
+}

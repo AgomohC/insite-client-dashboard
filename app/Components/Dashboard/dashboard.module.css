@@ -1,0 +1,47 @@
+.headerRoot {
+	background: var(--mantine-color-gray-1);
+	height: 13rem;
+	padding-top: 5rem;
+	left: max(calc(((100vw - 113.1rem) / 2) + 19.2rem), calc(19.2rem + 5.5rem));
+	max-width: 93.9rem;
+	min-width: calc(76.8rem + 5.5rem);
+	position: relative;
+}
+.headerRootMobile {
+	padding-right: 5.5rem;
+	width: calc(93.9rem + 5.5rem);
+	max-width: none;
+}
+
+.navbarRoot {
+	background: var(--mantine-color-gray-1);
+	padding: 2.4rem 0 2.4rem 2.4rem;
+	min-height: 100%;
+	z-index: 100;
+}
+.mainRoot {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+	min-height: 100%;
+	padding: 0;
+	margin-left: max(
+		calc(((100vw - 113.1rem) / 2) + 19.2rem),
+		calc(19.2rem + 5.5rem)
+	);
+	max-width: 93.9rem;
+	min-width: calc(76.8rem + 5.5rem);
+}
+.mainRootMobile {
+	padding-right: 5.5rem;
+	width: calc(93.9rem + 5.5rem);
+	max-width: none;
+}
+.appContainer {
+	width: calc(5.5rem + 93.9rem);
+	overflow-x: auto;
+	padding-right: 5rem;
+}
+.appContainerMobile {
+	width: auto;
+	padding-right: 0;
+}

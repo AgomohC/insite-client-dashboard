@@ -1,0 +1,33 @@
+.root {
+	background: transparent;
+	border-bottom: solid 0.1rem var(--mantine-color-gray-3);
+	height: 100%;
+	max-width: 93.9rem;
+	min-width: 76.8rem;
+}
+.inputroot {
+	background: var(--mantine-color-white);
+	border-radius: 1.6rem;
+	display: flex;
+	width: 42rem;
+	align-items: center;
+}
+.icon {
+	left: 1.3rem;
+	fill: var(--mantine-color-brand-0);
+}
+.input {
+	height: 100%;
+	font-size: 1.6rem;
+	padding: 1.8rem 1.1rem 1.8rem 4.75rem;
+	color: var(--mantine-color-brand-3);
+	caret-color: var(--mantine-color-brand-3);
+}
+
+.input::placeholder {
+	color: var(--mantine-color-brand-0);
+}
+
+.input[data-with-icon] {
+	padding-left: 4.75rem;
+}

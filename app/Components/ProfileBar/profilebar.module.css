@@ -1,0 +1,20 @@
+.profile {
+	background-color: var(--mantine-color-white);
+	width: 24rem;
+	border-radius: 1.6rem;
+	border-style: solid;
+	border-width: 0.1rem;
+	border-color: var(--mantine-color-gray-7);
+	padding: 0.8rem;
+}
+.avatar {
+	aspect-ratio: 1/1;
+	width: 4rem;
+	height: 4rem;
+}
+.text {
+	color: var(--mantine-color-brand-0);
+}
+.icon {
+	fill: var(--mantine-color-brand-6);
+}

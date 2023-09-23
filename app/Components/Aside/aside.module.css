@@ -1,0 +1,67 @@
+.root {
+	border: 1px solid rgba(225, 225, 225, 0.13);
+	background: var(--mantine-color-white);
+	border-radius: 1.8rem;
+	min-height: fit-content;
+	height: 100%;
+	position: relative;
+	width: 16.6rem;
+	padding-top: 3.2rem;
+	padding-bottom: 3.2rem;
+	overflow-y: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+.root::-webkit-scrollbar {
+	display: none;
+}
+.navlinkscont {
+	flex: 1;
+}
+.navlinks {
+	padding-top: 5.5rem;
+	margin: 0 0.8rem;
+}
+.navlinks:last-of-type {
+	min-height: 19rem;
+}
+.label {
+	font-size: 1.4rem;
+	opacity: 0.86;
+	font-weight: 400;
+	color: var(--mantine-color-brand-1);
+}
+.homeLabel {
+	font-size: 1.6rem;
+	opacity: 1;
+	font-weight: 500;
+}
+.icon {
+	margin-right: 1.6rem;
+}
+.icon > svg {
+	fill: var(--mantine-color-gray-5);
+}
+.iconTesters {
+	margin-right: 1.2rem;
+}
+.link {
+	padding: 1.2rem 2.4rem;
+}
+
+.link:hover {
+	background: none;
+}
+.link[data-active] {
+	background-color: var(--mantine-color-gray-0);
+	border-radius: 0.8rem;
+}
+.link[data-active] span {
+	font-weight: 500;
+}
+.link[data-active]:hover {
+	background-color: var(--mantine-color-gray-0);
+}
+.link[data-active] > .icon svg {
+	fill: var(--mantine-color-brand-1);
+}
