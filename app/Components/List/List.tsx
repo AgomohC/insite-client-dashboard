@@ -9,7 +9,6 @@ import {
 	Avatar,
 	Box,
 	AvatarGroup,
-	Button,
 } from "@mantine/core"
 import avatar1 from "@/public/images/avatar-1.png"
 import avatar2 from "@/public/images/avatar-2.png"
@@ -19,6 +18,7 @@ import checkout from "@/public/images/checkout.png"
 import Image from "next/image"
 import { Arrow, Flows, KebabMenu, Manual, New } from "@/public/icons"
 import { useState } from "react"
+import CustomButton from "../Button/Button"
 
 interface IListProps {
 	children: React.ReactNode
@@ -152,8 +152,6 @@ List.Item = function ListItem({ item }: IItemProps) {
 						>
 							<AvatarGroup spacing='1.4rem'>
 								{item.avatar.map((av, idx) => {
-									// console.log(idx)
-
 									return (
 										<Avatar
 											src={av.src}
@@ -167,10 +165,6 @@ List.Item = function ListItem({ item }: IItemProps) {
 													styles[`avatar${idx}`]
 												),
 											}}
-											// className={cx(
-											// 	styles.avatar,
-											// 	styles[`avatar${idx}`]
-											// )}
 										/>
 									)
 								})}
@@ -252,23 +246,20 @@ List.Header = function ListHeader({ btnAction }: IHeaderProps) {
 					</Box>
 				))}
 			</Flex>
-
-			<Button
-				classNames={{
-					root: styles.btnRoot,
-					inner: styles.btnInner,
-					section: styles.btnIcon,
-					label: styles.btnLabel,
-				}}
-				rightSection={<New />}
-				onClick={() => {
+			<CustomButton
+				title='Create New'
+				variant='filled'
+				action={() => {
 					if (btnAction) {
 						btnAction()
 					}
 				}}
-			>
-				Create New
-			</Button>
+				rightSection={
+					<Box className={styles.btnIcon}>
+						<New />
+					</Box>
+				}
+			/>
 		</Flex>
 	)
 }
