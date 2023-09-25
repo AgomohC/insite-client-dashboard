@@ -29,6 +29,10 @@ export default function RootLayout({
 					httpEquiv='X-UA-Compatible'
 					content='IE=edge'
 				/>
+				<link
+					rel='shortcut icon'
+					href='/favicon.svg'
+				/>
 			</head>
 			<body className={inter.className}>
 				<MantineProvider theme={theme}>{children}</MantineProvider>
