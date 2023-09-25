@@ -2,7 +2,7 @@
 	font-size: 62.5%;
 }
 body {
-	background: var(--mantine-color-gray-1);
-	background-color: var(--mantine-color-gray-1);
+	background: var(--mantine-color-gray-1) !important;
+	background-color: var(--mantine-color-gray-1) !important;
 	font-family: var(--font-inter);
 }
