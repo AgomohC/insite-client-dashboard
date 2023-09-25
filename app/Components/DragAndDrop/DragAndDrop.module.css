@@ -1,0 +1,85 @@
+.root {
+	border-radius: 1rem;
+	border: 1.256px dashed #dbdee0;
+	background: var(--mantine-color-white);
+	padding: 2.4rem 4.8rem;
+}
+.rootCsv {
+	padding: 1.6rem 0 3.2rem;
+}
+
+.dropTitle {
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 1.46rem;
+	color: #848f8f;
+	text-transform: capitalize;
+}
+
+.icon {
+	gap: 1.3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--mantine-color-white);
+	border-radius: 1.13rem;
+	border: 0.705px solid rgba(242, 242, 242, 0.94);
+	box-shadow: 0px 2.82142px 19.04461px 0px rgba(122, 133, 153, 0.12);
+	width: 5.8rem;
+	height: 5.2rem;
+}
+.iconExcel {
+	border-radius: 0.8rem;
+	border: 0.818px solid #f2f4f7;
+	box-shadow: 0px 3.27273px 22.09091px 0px rgba(122, 133, 153, 0.12);
+}
+.skew {
+	transform: rotate(var(--skew-deg));
+	margin-right: -0.1rem;
+}
+.iconImg {
+	height: 3.6rem;
+	min-width: 4rem;
+}
+
+.iconGroup :nth-child(2) {
+	margin-top: -1rem;
+}
+.skew .iconImg {
+	transform: rotate(var(--img-skew-deg));
+}
+.dropText {
+	color: #858585;
+	text-align: center;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 2rem;
+}
+.notCsv {
+	margin-top: 0.8rem;
+	font-weight: 600;
+}
+.dropSubtext {
+	color: rgba(1, 40, 40, 0.4);
+	text-align: center;
+	font-size: 1.4rem;
+	font-weight: 400;
+	line-height: 2rem;
+}
+.dropSubtextBox {
+	border-radius: 5.2rem;
+	border: 1px solid rgba(5, 49, 50, 0.33);
+	display: flex;
+	align-items: center;
+	padding: 1rem 1.2rem 1rem 2rem;
+	color: #012828;
+	font-size: 1.4rem;
+	line-height: 1.82rem;
+}
+.browse {
+	color: var(--mantine-color-brand-4);
+	font-weight: 500;
+	line-height: 133.023%;
+	letter-spacing: -0.24px;
+	text-decoration-line: underline;
+}

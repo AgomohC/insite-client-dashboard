@@ -1,15 +1,15 @@
-import { Text } from "@mantine/core"
+import { Box, Text } from "@mantine/core"
 import Logo from "/public/icons/Insite_Logo.svg"
-
+import DragAndDrop from "./Components/DragAndDrop/DragAndDrop"
 export default function Home() {
 	return (
 		<main>
-			<Text>
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam
-				ducimus assumenda perspiciatis earum unde velit deleniti
-				exercitationem, aut minima eum?
-			</Text>
-			<Logo />
+			<Box w='50rem'>
+				<DragAndDrop
+					type='image'
+					title='upload csv'
+				/>
+			</Box>
 		</main>
 	)
 }
