@@ -3,5 +3,6 @@
 }
 body {
 	background: var(--mantine-color-gray-1);
+	background-color: var(--mantine-color-gray-1);
 	font-family: var(--font-inter);
 }
