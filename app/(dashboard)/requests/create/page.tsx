@@ -6,7 +6,7 @@ export default function Page() {
 				This is the page the user add their request title, request
 				description and request goal
 			</h1>
-			<Link href={"/requests/create"}>Next Page</Link>
+			<Link href={"/requests/create/criteria"}>Next Page</Link>
 		</>
 	)
 }

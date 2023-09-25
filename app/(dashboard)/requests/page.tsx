@@ -3,7 +3,7 @@ import PageHeader from "@/app/Components/PageHeader/PageHeader"
 import List from "@/app/Components/List/List"
 import { Flex } from "@mantine/core"
 import { useRouter } from "next/navigation"
-export default function Page() {
+export default function RequestsPage() {
 	const { push } = useRouter()
 	return (
 		<Flex
