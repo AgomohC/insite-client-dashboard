@@ -24,7 +24,7 @@ export default function DashboardLayout({
 	return (
 		<AppShell
 			header={{ height: "8rem" }}
-			navbar={{ width: "19.2rem", breakpoint: 0 }}
+			navbar={{ width: "18.4rem", breakpoint: 0 }}
 		>
 			<AppShellHeader
 				withBorder={false}

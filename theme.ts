@@ -14,7 +14,7 @@ export const theme = createTheme({
 			"#083545",
 			"#063334",
 			"#FAFAFA",
-			"#FAFAFA",
+			"#07393A",
 		],
 		gray: [
 			"#F7F8F8",
@@ -55,5 +55,6 @@ export const theme = createTheme({
 			"#fff8e0",
 		],
 	},
+
 	primaryColor: "brand",
 })

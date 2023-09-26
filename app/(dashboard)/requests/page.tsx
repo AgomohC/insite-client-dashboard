@@ -10,6 +10,7 @@ export default function RequestsPage() {
 			direction='column'
 			gap='2rem'
 			w='93.9rem'
+			mt='10.45rem'
 		>
 			<PageHeader
 				title='Requests'
