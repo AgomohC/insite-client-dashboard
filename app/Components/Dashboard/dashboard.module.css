@@ -1,47 +1,37 @@
 .headerRoot {
-	background: var(--mantine-color-gray-1);
-	height: 13rem;
-	padding-top: 5rem;
-	left: max(calc(((100vw - 113.1rem) / 2) + 19.2rem), calc(19.2rem + 5.5rem));
-	max-width: 93.9rem;
-	min-width: calc(76.8rem + 5.5rem);
-	position: relative;
-}
-.headerRootMobile {
-	padding-right: 5.5rem;
-	width: calc(93.9rem + 5.5rem);
-	max-width: none;
+	height: 7.2rem;
+	background: var(--mantine-color-white);
+	padding: 0.8rem 3.2rem;
 }
 
 .navbarRoot {
-	background: var(--mantine-color-gray-1);
-	padding: 2.4rem 0 2.4rem 2.4rem;
+	background: transparent;
+	padding-left: 1.6rem;
+	top: calc(7.2rem + 1.6rem);
 	min-height: 100%;
 	z-index: 100;
+	overflow-y: auto;
 }
 .mainRoot {
-	margin-top: 4rem;
-	margin-bottom: 4rem;
 	min-height: 100%;
 	padding: 0;
-	margin-left: max(
-		calc(((100vw - 113.1rem) / 2) + 19.2rem),
-		calc(19.2rem + 5.5rem)
-	);
-	max-width: 93.9rem;
-	min-width: calc(76.8rem + 5.5rem);
+	min-width: calc(100% - (6.4rem + 16.8rem));
+	width: fit-content;
+	overflow-x: auto;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	margin-left: calc(6.4rem + 16.8rem);
+	padding-top: 7.2rem;
+	display: flex;
+	justify-content: center;
+}
+.mainRoot::-webkit-scrollbar {
+	display: none;
 }
 .mainRootMobile {
-	padding-right: 5.5rem;
-	width: calc(93.9rem + 5.5rem);
-	max-width: none;
+	padding-right: 6.4rem;
 }
 .appContainer {
-	width: calc(5.5rem + 93.9rem);
+	width: 100%;
 	overflow-x: auto;
-	padding-right: 5rem;
-}
-.appContainerMobile {
-	width: auto;
-	padding-right: 0;
 }

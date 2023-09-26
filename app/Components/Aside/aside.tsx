@@ -5,7 +5,6 @@ import styles from "./aside.module.css"
 import Link from "next/link"
 import { useSubApp } from "@/app/hooks/useSubApp"
 import {
-	Logo,
 	Home,
 	Schedule,
 	Requests,
@@ -30,74 +29,62 @@ export default function AppShellAside() {
 		<Flex
 			className={styles.root}
 			direction='column'
+			justify='space-between'
 		>
 			<Flex
-				align='center'
-				justify='center'
-			>
-				<Logo />
-			</Flex>
-
-			<Flex
 				direction='column'
-				justify='space-between'
-				className={styles.navlinkscont}
+				gap='0.8rem'
+				className={styles.navlinks}
 			>
-				<Flex
-					direction='column'
-					gap='0.8rem'
-					className={styles.navlinks}
-				>
-					{NavLinks.map(link => {
-						return (
-							<NavLink
-								key={link.text}
-								label={link.text}
-								active={active(link.href)}
-								leftSection={<link.icon />}
-								component={Link}
-								href={"/" + link.href}
-								classNames={{
-									root: styles.link,
-									section: cx(styles.icon, {
-										[styles.iconTesters]: link.text === "Testers",
-									}),
-									label: cx(styles.label, {
-										[styles.homeLabel]: link.text === "Home",
-									}),
-								}}
-							/>
-						)
-					})}
-				</Flex>
-				<Flex
-					className={styles.navlinks}
-					direction='column'
-					gap='0.8rem'
-					justify='flex-end'
-				>
-					{FooterLinks.map(link => {
-						return (
-							<NavLink
-								component={Link}
-								key={link.text}
-								label={link.text}
-								leftSection={<link.icon />}
-								href={"/" + link.href}
-								active={active(link.href)}
-								classNames={{
-									root: styles.link,
-									section: cx(styles.icon, {
-										[styles.iconTesters]: link.text === "Testers",
-									}),
-									label: cx(styles.label, {
-										[styles.homeLabel]: link.text === "Home",
-									}),
-								}}
-							/>
-						)
-					})}
-				</Flex>
+				{NavLinks.map(link => {
+					return (
+						<NavLink
+							key={link.text}
+							label={link.text}
+							active={active(link.href)}
+							leftSection={<link.icon />}
+							component={Link}
+							href={"/" + link.href}
+							classNames={{
+								root: styles.link,
+								section: cx(styles.icon, {
+									[styles.iconTesters]: link.text === "Testers",
+								}),
+								label: cx(styles.label, {
+									[styles.homeLabel]: link.text === "Home",
+								}),
+							}}
+						/>
+					)
+				})}
+			</Flex>
+			<Flex
+				className={styles.navlinks}
+				direction='column'
+				gap='0.8rem'
+				justify='flex-end'
+			>
+				{FooterLinks.map(link => {
+					return (
+						<NavLink
+							component={Link}
+							key={link.text}
+							label={link.text}
+							leftSection={<link.icon />}
+							href={"/" + link.href}
+							active={active(link.href)}
+							classNames={{
+								root: styles.link,
+								section: cx(styles.icon, {
+									[styles.iconTesters]: link.text === "Testers",
+								}),
+								label: cx(styles.label, {
+									[styles.homeLabel]: link.text === "Home",
+								}),
+							}}
+						/>
+					)
+				})}
 			</Flex>
 		</Flex>
 	)

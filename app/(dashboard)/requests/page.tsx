@@ -9,8 +9,7 @@ export default function RequestsPage() {
 		<Flex
 			direction='column'
 			gap='2rem'
-			mt='0.8rem'
-			w='100%'
+			w='93.9rem'
 		>
 			<PageHeader
 				title='Requests'

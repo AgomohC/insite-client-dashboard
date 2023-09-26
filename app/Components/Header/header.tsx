@@ -1,26 +1,34 @@
 import styles from "./header.module.css"
 import ProfileBar from "../ProfileBar/profilebar"
-import { Flex, Input, TextInput } from "@mantine/core"
-import { Search } from "@/public/icons"
+import { Flex, TextInput } from "@mantine/core"
+import { Logo, Search } from "@/public/icons"
 export default function AppShellHeader() {
 	return (
 		<Flex
 			justify='space-between'
-			align='flex-start'
+			align='center'
 			className={styles.root}
 		>
-			<TextInput
-				leftSection={<Search />}
-				placeholder='Search'
-				radius='xl'
-				variant='unstyled'
-				classNames={{
-					wrapper: styles.inputroot,
-					section: styles.icon,
-					input: styles.input,
-				}}
-			/>
-			<ProfileBar />
+			<Flex
+				align='center'
+				justify='center'
+			>
+				<Logo />
+			</Flex>
+			<Flex gap='3.2rem'>
+				<TextInput
+					leftSection={<Search />}
+					placeholder='Search'
+					radius='xl'
+					variant='unstyled'
+					classNames={{
+						wrapper: styles.inputroot,
+						section: styles.icon,
+						input: styles.input,
+					}}
+				/>
+				<ProfileBar />
+			</Flex>
 		</Flex>
 	)
 }

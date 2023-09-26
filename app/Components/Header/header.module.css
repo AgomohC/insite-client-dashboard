@@ -1,15 +1,11 @@
 .root {
-	background: transparent;
-	border-bottom: solid 0.1rem var(--mantine-color-gray-3);
 	height: 100%;
-	max-width: 93.9rem;
-	min-width: 76.8rem;
 }
 .inputroot {
 	background: var(--mantine-color-white);
 	border-radius: 1.6rem;
 	display: flex;
-	width: 42rem;
+	width: 14rem;
 	align-items: center;
 }
 .icon {

@@ -23,16 +23,13 @@ export default function DashboardLayout({
 
 	return (
 		<AppShell
-			layout='alt'
 			header={{ height: "8rem" }}
 			navbar={{ width: "19.2rem", breakpoint: 0 }}
 		>
 			<AppShellHeader
 				withBorder={false}
 				classNames={{
-					header: cx(styles.headerRoot, {
-						[styles.headerRootMobile]: matchesMobile,
-					}),
+					header: cx(styles.headerRoot),
 				}}
 			>
 				<Header />
@@ -51,9 +48,8 @@ export default function DashboardLayout({
 				}}
 			>
 				<Flex
-					className={cx(styles.appContainer, {
-						[styles.appContainerMobile]: matchesMobile,
-					})}
+					className={styles.appContainer}
+					justify='center'
 				>
 					{children}
 				</Flex>
