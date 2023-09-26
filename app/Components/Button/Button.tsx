@@ -10,6 +10,7 @@ interface IProps {
 	action?: () => void
 	fullWidth?: boolean
 	disabled?: boolean
+	type: "button" | "submit"
 	loading?: boolean
 }
 
@@ -22,6 +23,7 @@ export default function CustomButton({
 	variant,
 	disabled,
 	loading,
+	type,
 }: IProps) {
 	return (
 		<Button
@@ -45,6 +47,7 @@ export default function CustomButton({
 			}}
 			disabled={disabled}
 			loading={loading}
+			type={type}
 		>
 			{title}
 		</Button>

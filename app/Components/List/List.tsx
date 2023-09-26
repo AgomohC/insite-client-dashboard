@@ -254,6 +254,7 @@ List.Header = function ListHeader({ btnAction }: IHeaderProps) {
 						btnAction()
 					}
 				}}
+				type='button'
 				rightSection={
 					<Box className={styles.btnIcon}>
 						<New />
