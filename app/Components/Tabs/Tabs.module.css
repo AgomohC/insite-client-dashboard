@@ -9,7 +9,7 @@
 }
 
 .linkActive {
-	padding: 0.8rem 0.8rem 0.8rem 1.6rem;
+	padding: 0.275rem 0.8rem 0.275rem 1.6rem;
 	font-weight: 500;
 	border-left-color: var(--mantine-color-brand-4);
 	border-left-width: 0.2rem;
