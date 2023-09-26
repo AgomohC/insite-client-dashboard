@@ -7,13 +7,14 @@ interface IProps {
 	subtext?: string
 	icon?: React.ReactNode
 	iconAction?: () => void
+	gap: "sm" | "bg"
 }
 
-const PageHeader = ({ title, subtext, icon, iconAction }: IProps) => {
+const PageHeader = ({ title, subtext, icon, iconAction, gap }: IProps) => {
 	return (
 		<Flex
 			direction='column'
-			gap='0.8rem'
+			gap={gap === "sm" ? "0.8rem" : "1.6rem"}
 		>
 			<Text
 				component='h1'

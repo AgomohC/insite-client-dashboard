@@ -15,6 +15,7 @@ export default function RequestsPage() {
 			<PageHeader
 				title='Requests'
 				subtext='Select preferred criteria for testers'
+				gap='sm'
 			/>
 			<List>
 				<List.Header btnAction={() => push("/requests/create")} />
