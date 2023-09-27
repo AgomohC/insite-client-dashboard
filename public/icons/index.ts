@@ -15,9 +15,13 @@ import Testers from "./Testers.svg"
 import Design from "./Design.svg"
 import Image from "./Image.svg"
 import Prototype from "./Prototype.svg"
+import Desktop from "./Desktop.svg"
+import Mobile from "./Mobile.svg"
+import Tablet from "./Tablet.svg"
 
 export {
 	Arrow,
+	Desktop,
 	ExpandMore,
 	Flows,
 	Help,
@@ -25,11 +29,13 @@ export {
 	KebabMenu,
 	Logo,
 	Manual,
+	Mobile,
 	New,
 	Requests,
 	Schedule,
 	Search,
 	Settings,
+	Tablet,
 	Testers,
 	Design,
 	Image,

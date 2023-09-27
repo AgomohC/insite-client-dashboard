@@ -1,0 +1,21 @@
+.target {
+	width: 5rem;
+	height: 5rem;
+	flex-shrink: 0;
+	border-radius: 0.8rem;
+	background: var(--mantine-color-white);
+	box-shadow: 0px 3.27273px 22.09091px 0px rgba(122, 133, 153, 0.12);
+	cursor: pointer;
+	transition: 0.3s all ease;
+}
+
+.target svg {
+	fill: #565656;
+}
+.targetActive {
+	border: 0.818px solid var(--mantine-color-white);
+	background: #0a4d4f;
+}
+.targetActive svg {
+	fill: var(--mantine-color-white);
+}
