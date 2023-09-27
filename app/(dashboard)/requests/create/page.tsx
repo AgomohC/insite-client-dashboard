@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import CardLayout from "./components/CardLayout"
-import { Center, Flex } from "@mantine/core"
+import { Center, Flex, Divider } from "@mantine/core"
 import CustomTextInput from "@/app/Components/Inputs/TextInput"
 import CustomButton from "@/app/Components/Button/Button"
 import CustomTextArea from "@/app/Components/Inputs/TextArea"
@@ -79,6 +79,11 @@ export default function Page() {
 							placeholder='Goal'
 							control={control}
 							data={data}
+						/>
+						<Divider
+							mt='1.6rem'
+							mb='0.8rem'
+							classNames={{ root: styles.divider }}
 						/>
 						<Flex justify='flex-end'>
 							<CustomButton
