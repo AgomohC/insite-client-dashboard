@@ -12,6 +12,9 @@ import Schedule from "./Schedule.svg"
 import Search from "./Search.svg"
 import Settings from "./Settings.svg"
 import Testers from "./Testers.svg"
+import Design from "./Design.svg"
+import Image from "./Image.svg"
+import Prototype from "./Prototype.svg"
 
 export {
 	Arrow,
@@ -28,4 +31,7 @@ export {
 	Search,
 	Settings,
 	Testers,
+	Design,
+	Image,
+	Prototype,
 }
