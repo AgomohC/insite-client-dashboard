@@ -1,0 +1,164 @@
+.root {
+	border-radius: 1.6rem;
+}
+.head {
+	padding: 0.6rem 1.6rem;
+	width: 100%;
+	border-radius: 1.6rem;
+	border: 1px solid #f2f4f7;
+	background: var(--mantine-color-white);
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+.headActive {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.headTitle {
+	color: var(--mantine-color-brand-4);
+	font-size: 1.6rem;
+	font-weight: 500;
+	line-height: 1.65rem;
+	letter-spacing: -0.16px;
+}
+.headSubtext {
+	color: #a1a1a1;
+	font-size: 1.4rem;
+	line-height: 2rem;
+}
+
+.headLink {
+	padding: 0.5rem 1.6rem;
+	border-radius: 0.8rem;
+	border: 0.367px solid var(--mantine-color-gray-3);
+	background: var(--mantine-color-brand-8);
+	max-width: 21.8rem;
+}
+.headLinkText {
+	overflow: hidden;
+	color: var(--mantine-color-brand-4);
+	font-size: 1.4rem;
+	line-height: 2rem;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	flex: 1;
+}
+.headLinkImg {
+	height: 2.4rem;
+	width: 2.4rem;
+	aspect-ratio: 1/1;
+}
+
+.sketchImg {
+	transform: scale(1.35);
+}
+.icon {
+	height: 2.8rem;
+	width: 2.8rem;
+	transition: all 0.3s ease;
+	border-radius: 50%;
+}
+.incomplete {
+	background: var(--mantine-color-yellow-0);
+}
+.incompleteIcon {
+	fill: var(--mantine-color-brand-4);
+}
+.complete {
+	background: var(--mantine-color-green-2);
+	color: var(--mantine-color-white);
+}
+.pending {
+	background: var(--mantine-color-green-1);
+}
+.pendingIcon {
+	fill: var(--mantine-color-yellow-0);
+}
+.tasks {
+	width: 4.4rem;
+	border-radius: 5.2rem;
+}
+
+.tasksText {
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 2rem;
+}
+
+.formActive {
+	padding: 2.4rem;
+	border-bottom-left-radius: 1.6rem;
+	border-bottom-right-radius: 1.6rem;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	background: var(--mantine-color-brand-8);
+	display: flex;
+	gap: 1.6rem;
+	flex-direction: column;
+	width: 100%;
+}
+.formHead {
+	cursor: pointer;
+}
+.formHeadText {
+	color: var(--mantine-color-brand-4);
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 1.4563rem;
+	letter-spacing: -0.14px;
+}
+.formHeadIcon {
+	fill: var(--mantine-color-brand-4);
+	rotate: 90deg;
+}
+.taskTypeRoot {
+	width: 100%;
+	border-radius: 1.6rem;
+	border: 1px solid #f1f0f0;
+}
+
+.taskType {
+	padding: 1.6rem;
+	flex: 1;
+}
+.taskType:first-child {
+	border-right: 1px solid #f3f3f3;
+}
+.taskTypeText {
+	color: #565656;
+	font-size: 1.4rem;
+	line-height: 1.4563rem;
+}
+.taskTypeIcon {
+	stroke: var(--mantine-color-green-1);
+	/* fill: #2d7c7e; */
+}
+.helpIcon {
+	stroke: #d2e0e0;
+}
+.arrowIcon {
+	border-radius: 50%;
+	width: 2.4rem;
+	height: 2.4rem;
+	background: var(--mantine-color-yellow-0);
+	rotate: 45deg;
+}
+.newIcon {
+	fill: var(--mantine-color-green-1);
+}
+.arrowIcon svg {
+	fill: var(--mantine-color-brand-4);
+}
+
+.instruction {
+	height: 5.6rem;
+	background: var(--mantine-color-white);
+	border-radius: 1rem;
+	padding-left: 2.4rem;
+	padding-right: 1.6rem;
+}
+.instructionText {
+	color: #565656;
+	font-size: 1.4rem;
+	line-height: 2rem;
+}
