@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link"
 import CardLayoutWithHead from "../../../components/CardLayoutWithHeader"
 import { Center, Flex, Text, Box } from "@mantine/core"
 import Targets from "@/app/Components/Targets/Target"
