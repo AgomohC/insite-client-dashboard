@@ -57,6 +57,9 @@
 	height: 4.2rem;
 	width: 4.2rem;
 }
+.iconFill {
+	fill: var(--mantine-color-brand-4);
+}
 .srcCardIcon svg {
 	fill: var(--mantine-color-brand-4);
 }
@@ -133,4 +136,25 @@
 	font-weight: 500;
 	line-height: 2rem;
 	letter-spacing: -0.08px;
+}
+
+.selectImg {
+	height: 3.2rem;
+	width: 3.2rem;
+	aspect-ratio: 1/1;
+}
+
+.sketchImg {
+	transform: scale(1.35);
+}
+
+.prototypeForm {
+	display: flex;
+	gap: 1.6rem;
+	flex-direction: column;
+	padding: 1.6rem;
+	justify-content: center;
+	border-radius: 1.6rem;
+	border: 1px dashed #ebe9e9;
+	background: var(--mantine-color-brand-8);
 }
