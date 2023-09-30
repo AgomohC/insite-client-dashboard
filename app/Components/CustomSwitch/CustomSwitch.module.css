@@ -1,0 +1,30 @@
+.track {
+	border-radius: 1.2rem;
+	border: 0.1rem solid #f2f4f7;
+	background: var(--mantine-color-white);
+	box-shadow: 0rem 0.4rem 2.7rem 0rem rgba(122, 133, 153, 0.12);
+	position: relative;
+	width: 3.5rem;
+	height: 2.2rem;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
+.thumb {
+	border-radius: 50%;
+	width: 2.2rem;
+	height: 2.2rem;
+	flex-shrink: 0;
+	transition: all 0.3s ease;
+	position: relative;
+	left: -0.1rem;
+	border: 1.294px solid #f5f5f5;
+	background: linear-gradient(180deg, #b3b3b3 0%, #767f7c 100%);
+	box-shadow: 0.2rem 0.1rem 0.4rem 0rem rgba(183, 183, 183, 0.25);
+}
+
+.thumbActive {
+	background: linear-gradient(180deg, #1aa078 0%, #007955 100%);
+	left: 1.2rem;
+}
