@@ -1,16 +1,74 @@
-import { Flex } from "@mantine/core"
-import Link from "next/link"
+"use client"
+import { Flex, Text, Group, Box, Center } from "@mantine/core"
+import CardLayoutWithHead from "../../../components/CardLayoutWithHeader"
+import styles from "../../../components/styles.module.css"
+import TestersCard from "./components/TestersCardLayout"
+import { useState } from "react"
+import CustomButton from "@/app/Components/Button/Button"
+import { useRouter } from "next/navigation"
+import { Collapse } from "@mantine/core"
+import { Arrow } from "@/public/icons"
 
 export default function Page() {
+	const [active, setActive] = useState<"insite" | "controlled" | "">("")
+
+	const { push } = useRouter()
 	return (
-		<>
-			<Flex gap='1rem'>
-				<Link href='/requests/create/prototype/testers/insite'>insite</Link>
-				<Link href='/requests/create/prototype/testers/controlled'>
-					controlled
-				</Link>
+		<CardLayoutWithHead
+			type='prototype'
+			headerText='From Prototype'
+			href='/requests/create/criteria'
+		>
+			<Flex
+				gap='1.6rem'
+				direction='column'
+				className={styles.targetLayout}
+			>
+				<Text className={styles.targetLayoutHeadText}>Testers Type</Text>
+				<Group gap='2.4rem'>
+					<TestersCard
+						active={active === "insite"}
+						type='insite'
+						onChange={() => {
+							if (active === "insite") {
+								setActive("")
+							} else {
+								setActive("insite")
+							}
+						}}
+					/>
+					<TestersCard
+						active={active === "controlled"}
+						type='controlled'
+						onChange={() => {
+							if (active === "controlled") {
+								setActive("")
+							} else {
+								setActive("controlled")
+							}
+						}}
+					/>
+				</Group>
+				<Collapse in={!!active}>
+					<Flex justify='flex-end'>
+						<CustomButton
+							variant='filled'
+							title='Continue'
+							type='button'
+							rightSection={
+								<Center className={styles.icon}>
+									<Arrow />
+								</Center>
+							}
+							action={() => {
+								push(
+									`/requests/create/criteria/prototype/testers/${active}`
+								)
+							}}
+						/>
+					</Flex>
+				</Collapse>
 			</Flex>
-			<h1>Page where users pick their testers</h1>
-		</>
+		</CardLayoutWithHead>
 	)
 }
