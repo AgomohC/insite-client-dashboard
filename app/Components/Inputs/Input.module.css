@@ -1,6 +1,9 @@
 .wrapper {
 	margin-bottom: 0;
 }
+.root {
+	flex: 1;
+}
 .dropdown {
 	background: var(--mantine-color-white);
 	border-radius: 0.8rem;
@@ -72,4 +75,42 @@
 }
 .section {
 	right: 1.6rem;
+}
+
+.textSelectSection {
+	width: fit-content;
+	height: 100%;
+	padding: 0.6rem 0.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.comboBoxInputRoot {
+	height: 100%;
+	width: 7rem;
+	padding: 0;
+}
+.comboBoxInputWrapper {
+	height: 100%;
+	width: 100%;
+}
+.comboBoxInput {
+	border-radius: 0.8rem;
+	height: 100%;
+	background: #f6f5f5;
+	border: none;
+	width: 100%;
+}
+.comboBoxInputIcon {
+	height: 1.8rem;
+	width: 1.8rem;
+}
+.comboBoxInputIconBox {
+	right: 0.8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.textSelectInput {
+	padding-left: 8.6rem;
 }
