@@ -18,26 +18,37 @@ import Prototype from "./Prototype.svg"
 import Desktop from "./Desktop.svg"
 import Mobile from "./Mobile.svg"
 import Tablet from "./Tablet.svg"
-
+import Hourglass from "./hourglass.svg"
+import Complete from "./Complete.svg"
+import Timed from "./Timed.svg"
+import Rename from "./Rename.svg"
+import Record from "./Record.svg"
+import HelpCircle from "./HelpCircle.svg"
 export {
 	Arrow,
+	Complete,
+	Design,
 	Desktop,
 	ExpandMore,
 	Flows,
 	Help,
+	HelpCircle,
 	Home,
+	Hourglass,
+	Image,
 	KebabMenu,
 	Logo,
 	Manual,
 	Mobile,
 	New,
+	Prototype,
+	Record,
+	Rename,
 	Requests,
 	Schedule,
 	Search,
 	Settings,
 	Tablet,
 	Testers,
-	Design,
-	Image,
-	Prototype,
+	Timed,
 }
