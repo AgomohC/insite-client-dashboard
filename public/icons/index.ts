@@ -24,9 +24,14 @@ import Timed from "./Timed.svg"
 import Rename from "./Rename.svg"
 import Record from "./Record.svg"
 import HelpCircle from "./HelpCircle.svg"
+import LogoSmall from "./Logo_Small.svg"
+import Controlled from "./Controlled.svg"
+import Check from "./Check.svg"
 export {
 	Arrow,
+	Check,
 	Complete,
+	Controlled,
 	Design,
 	Desktop,
 	ExpandMore,
@@ -38,6 +43,7 @@ export {
 	Image,
 	KebabMenu,
 	Logo,
+	LogoSmall,
 	Manual,
 	Mobile,
 	New,
