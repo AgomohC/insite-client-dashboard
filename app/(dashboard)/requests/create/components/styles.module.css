@@ -158,3 +158,56 @@
 	border: 1px dashed #ebe9e9;
 	background: var(--mantine-color-brand-8);
 }
+
+.testersLayout {
+	border-radius: 1.6rem;
+	background: var(--mantine-color-brand-8);
+}
+.testersHead {
+	border-radius: 1.6rem 1.6rem 0 0;
+	border-top: 1px solid #f2f4f7;
+	border-right: 1px solid #f2f4f7;
+	border-left: 1px solid #f2f4f7;
+	background: var(--mantine-color-white);
+	height: 6.4rem;
+	padding: 0.8rem 2.4rem;
+	flex-grow: 1;
+}
+.testersHeadText {
+	color: var(--mantine-color-brand-4);
+
+	font-size: 1.6rem;
+	font-weight: 500;
+	line-height: 16.644px;
+	letter-spacing: -0.16px;
+}
+
+.testersBody {
+	padding: 2.4rem;
+	border-bottom: 1px solid #f2f4f7;
+	border-right: 1px solid #f2f4f7;
+	border-left: 1px solid #f2f4f7;
+	border-radius: 0 0 1.6rem 1.6rem;
+}
+.testersAdd {
+	border-radius: 16px;
+	border: 1px solid #f2f4f7;
+	background: var(--mantine-color-white);
+	padding: 1.6rem 2.4rem;
+	gap: 3.6rem;
+	width: fit-content;
+	cursor: pointer;
+}
+.testersAddText {
+	color: var(--mantine-color-brand-4);
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 2rem;
+}
+
+.testersAvailableText {
+	color: #848f8f;
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 1.5rem;
+}
