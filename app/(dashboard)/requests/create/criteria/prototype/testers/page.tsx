@@ -2,7 +2,7 @@
 import { Flex, Text, Group, Box, Center } from "@mantine/core"
 import CardLayoutWithHead from "../../../components/CardLayoutWithHeader"
 import styles from "../../../components/styles.module.css"
-import TestersCard from "./components/TestersCardLayout"
+import TestersCard from "./components/TestingCardLayout/TestersCardLayout"
 import { useState } from "react"
 import CustomButton from "@/app/Components/Button/Button"
 import { useRouter } from "next/navigation"
@@ -16,8 +16,8 @@ export default function Page() {
 	return (
 		<CardLayoutWithHead
 			type='prototype'
-			headerText='From Prototype'
-			href='/requests/create/criteria'
+			headerText='Choose Testers'
+			href='/requests/create/criteria/prototype'
 		>
 			<Flex
 				gap='1.6rem'

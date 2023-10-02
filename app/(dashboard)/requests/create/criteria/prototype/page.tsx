@@ -107,7 +107,6 @@ export default function Page() {
 		setRequests(requests => [...requests, values])
 		setActive(`${values.processName}${requests.length}`)
 		setOpen(false)
-
 		reset()
 	}
 
@@ -212,71 +211,78 @@ export default function Page() {
 						</Flex>
 					</Box>
 				</Collapse>
-				{requests.every(request => request.status === "complete") &&
-				requests.length > 0 ? (
-					<Group justify='space-between'>
-						<CustomButton
-							title='New Process'
-							variant='outlined'
-							type='button'
-							rightSection={
-								<Center className={styles.iconFill}>
-									<New />
-								</Center>
-							}
-							action={() => {
-								setActive("")
-								setOpen(true)
-							}}
-						/>
-						<CustomButton
-							title='Complete'
-							variant='filled'
-							type='button'
-							action={() => {
-								push("/requests/create/criteria/prototype/testers")
-							}}
-							rightSection={
-								<Center className={styles.icon}>
-									<Arrow />
-								</Center>
-							}
-						/>
-					</Group>
-				) : (
-					<Collapse
-						in={Boolean(
-							watch("processName") &&
-								watch("prototypeLink") &&
-								watch("requestType")
-						)}
-					>
-						<CustomButton
-							title='Add Process Flows'
-							type='button'
-							variant='outlined'
-							fullWidth
-							action={() => {
-								setRequests(request => [
-									...request,
-									{
-										processName: watch("processName"),
-										prototypeLink: watch("prototypeLink"),
-										requestType: watch("requestType"),
-										status: "incomplete",
-										prototypeType: prototypeSource,
-									},
-								])
-								reset()
-							}}
-							rightSection={
-								<Center className={styles.iconFill}>
-									<New />
-								</Center>
-							}
-						/>
-					</Collapse>
-				)}
+				{
+					// requests.every(request => request.status === "complete") &&
+					requests.length > 0 ? (
+						<Group justify='space-between'>
+							<CustomButton
+								title='New Process'
+								variant='outlined'
+								type='button'
+								rightSection={
+									<Center className={styles.iconFill}>
+										<New />
+									</Center>
+								}
+								action={() => {
+									setActive("")
+									setOpen(true)
+								}}
+							/>
+							<CustomButton
+								title='Complete'
+								variant='filled'
+								type='button'
+								action={() => {
+									push("/requests/create/criteria/prototype/testers")
+								}}
+								disabled={
+									!requests.every(
+										request => request.status === "complete"
+									)
+								}
+								rightSection={
+									<Center className={styles.icon}>
+										<Arrow />
+									</Center>
+								}
+							/>
+						</Group>
+					) : (
+						<Collapse
+							in={Boolean(
+								watch("processName") &&
+									watch("prototypeLink") &&
+									watch("requestType")
+							)}
+						>
+							<CustomButton
+								title='Add Process Flows'
+								type='button'
+								variant='outlined'
+								fullWidth
+								action={() => {
+									setRequests(request => [
+										...request,
+										{
+											processName: watch("processName"),
+											prototypeLink: watch("prototypeLink"),
+											requestType: watch("requestType"),
+											status: "incomplete",
+											prototypeType: prototypeSource,
+										},
+									])
+									reset()
+								}}
+								rightSection={
+									<Center className={styles.iconFill}>
+										<New />
+									</Center>
+								}
+							/>
+						</Collapse>
+					)
+				}
 			</Flex>
 		</CardLayoutWithHead>
 	)

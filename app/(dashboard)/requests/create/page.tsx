@@ -79,7 +79,6 @@ export default function Page() {
 							placeholder='Goal'
 							control={control}
 							data={data}
-							defaultValue=''
 						/>
 						<Divider
 							mt='1.6rem'
