@@ -1,0 +1,23 @@
+.copyRoot {
+	border-radius: 1rem;
+	border: 1px solid #f2f4f7;
+	background: #f2f4f7;
+	height: 5.6rem;
+}
+.copyBtn {
+	justify-content: center;
+	border-radius: 0.8rem;
+	background: var(--mantine-color-white);
+	color: var(--mantine-color-brand-4);
+	font-size: 1.4rem;
+	font-weight: 500;
+	line-height: 2rem;
+	cursor: pointer;
+	width: 12.8rem;
+}
+
+.copyText {
+	color: #565656;
+	font-size: 1.4rem;
+	line-height: 2rem;
+}
