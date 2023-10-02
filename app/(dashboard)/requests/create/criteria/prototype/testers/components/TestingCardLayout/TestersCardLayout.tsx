@@ -25,9 +25,9 @@ export default function TestersCard({ type, active, onChange }: IProps) {
 
 				<Box className={styles.checkBox}>
 					{active ? (
-						<Box className={styles.check}>
+						<Center className={styles.check}>
 							<Check />
-						</Box>
+						</Center>
 					) : (
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
