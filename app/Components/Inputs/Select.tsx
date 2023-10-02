@@ -30,13 +30,13 @@ export default function CustomSelect({
 	value,
 	onChange,
 }: IProps) {
-	let modifiedData = useMemo(() => {
-		if (data.every(datum => typeof datum === "string")) {
-			return ["Select Option", ...data]
-		} else {
-			return [{ label: "Select Option", value: "" }, ...data]
-		}
-	}, [data])
+	// let modifiedData = useMemo(() => {
+	// 	if (data.every(datum => typeof datum === "string")) {
+	// 		return ["Select Option", ...data]
+	// 	} else {
+	// 		return [{ label: "Select Option", value: "" }, ...data]
+	// 	}
+	// }, [data])
 
 	if (control) {
 		return (
@@ -58,7 +58,7 @@ export default function CustomSelect({
 					root: styles.root,
 				}}
 				rightSection={<ExpandMore className={styles.icon} />}
-				data={modifiedData}
+				data={data}
 				allowDeselect
 				checkIconPosition={undefined}
 				defaultValue={defaultValue}
@@ -83,7 +83,7 @@ export default function CustomSelect({
 					root: styles.root,
 				}}
 				rightSection={<ExpandMore className={styles.icon} />}
-				data={modifiedData}
+				data={data}
 				allowDeselect
 				checkIconPosition={undefined}
 				defaultValue={defaultValue}
