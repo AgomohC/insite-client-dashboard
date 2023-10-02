@@ -54,17 +54,13 @@ export default function TestersCard({ type, active, onChange }: IProps) {
 								stroke-width='0.393258'
 							/>
 						</svg>
-						// <Box
-						// 	role='radio'
-						// 	className={styles.checkBox}
-						// ></Box>
 					)}
 				</Box>
 			</Group>
 			<Stack gap={0}>
 				<Text className={styles.cardHeadText}>
 					{type === "insite"
-						? `INSITEPRO&copy; Registered Users`
+						? `INSITEPRO© Registered Users`
 						: "Controlled Targeted Testers"}
 				</Text>
 				<Text className={styles.cardBodyText}>
