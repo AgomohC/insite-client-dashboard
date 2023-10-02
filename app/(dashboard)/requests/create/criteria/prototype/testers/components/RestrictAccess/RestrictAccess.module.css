@@ -1,0 +1,14 @@
+.restrictRoot {
+	border-radius: 1.6rem;
+	border: 1px solid #f1f0f0;
+	background: var(--mantine-color-white);
+}
+
+.restrictText {
+	color: #565656;
+	font-size: 1.4rem;
+	line-height: 1.4563;
+}
+.restrictIcon {
+	fill: var(--mantine-color-green-1);
+}
