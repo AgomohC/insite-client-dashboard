@@ -27,13 +27,20 @@ import HelpCircle from "./HelpCircle.svg"
 import LogoSmall from "./Logo_Small.svg"
 import Controlled from "./Controlled.svg"
 import Check from "./Check.svg"
+import Link from "./Link.svg"
+import Trash from "./Trash.svg"
+import Excel from "./Excel.svg"
+import Copy from "./Copy.svg"
+import Lock from "./Lock.svg"
 export {
 	Arrow,
 	Check,
 	Complete,
 	Controlled,
+	Copy,
 	Design,
 	Desktop,
+	Excel,
 	ExpandMore,
 	Flows,
 	Help,
@@ -42,6 +49,8 @@ export {
 	Hourglass,
 	Image,
 	KebabMenu,
+	Link,
+	Lock,
 	Logo,
 	LogoSmall,
 	Manual,
@@ -57,4 +66,5 @@ export {
 	Tablet,
 	Testers,
 	Timed,
+	Trash,
 }
