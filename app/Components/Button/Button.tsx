@@ -3,7 +3,7 @@ import cx from "clsx"
 import { Button } from "@mantine/core"
 
 interface IProps {
-	title: string
+	title: React.ReactNode
 	variant: "outlined" | "filled"
 	rightSection?: React.ReactNode
 	leftSection?: React.ReactNode
