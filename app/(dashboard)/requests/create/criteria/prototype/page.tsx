@@ -172,6 +172,7 @@ export default function Page() {
 							name='processName'
 							placeholder='Process Name'
 							control={control}
+							label='Process Name'
 						/>
 						<CustomTextInputWithSelect
 							name='prototypeLink'

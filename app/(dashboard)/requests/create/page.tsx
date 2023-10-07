@@ -60,6 +60,7 @@ export default function Page() {
 							name='title'
 							placeholder='Request Title'
 							control={control}
+							label='Request Title'
 						/>
 						<CustomTextArea
 							name='description'

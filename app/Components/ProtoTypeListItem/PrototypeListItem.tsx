@@ -295,6 +295,7 @@ export default function PrototypeListItem({
 						<CustomTextInput
 							name='instruction'
 							placeholder='Instruction'
+							label='Instruction'
 							control={TaskControl}
 							rightSection={<HelpCircle className={styles.helpIcon} />}
 						/>
@@ -519,6 +520,7 @@ export default function PrototypeListItem({
 								<CustomTextInput
 									name='question'
 									placeholder='Question'
+									label='Question'
 									control={InterviewControl}
 									rightSection={
 										<HelpCircle className={styles.helpIcon} />
@@ -567,6 +569,7 @@ export default function PrototypeListItem({
 								<Divider />
 								<CustomTextInput
 									name='question'
+									label='Question'
 									placeholder='Question'
 									control={RatingControl}
 									rightSection={
@@ -601,11 +604,13 @@ export default function PrototypeListItem({
 										name='lowerLabel'
 										placeholder='Lower Label'
 										control={RatingControl}
+										label='Lower Label'
 									/>
 									<CustomTextInput
 										name='upperLabel'
 										placeholder='Upper Label'
 										control={RatingControl}
+										label='Upper Label'
 									/>
 								</Group>
 								<Group justify='flex-end'>
