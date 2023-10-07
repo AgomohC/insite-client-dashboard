@@ -2,7 +2,6 @@
 import PageHeader from "@/app/Components/PageHeader/PageHeader"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
 import CardLayout from "./components/CardLayout"
 import { Center, Flex, Divider } from "@mantine/core"
 import CustomTextInput from "@/app/Components/Inputs/TextInput"
@@ -12,14 +11,7 @@ import CustomSelect from "@/app/Components/Inputs/Select"
 import { Arrow } from "@/public/icons"
 import styles from "./components/styles.module.css"
 import { useRouter } from "next/navigation"
-
-export const infoSchema = z.object({
-	// title: z.string().min(1, { message: "TItle is required" }),
-	// description: z.string().min(1, { message: "Description is required" }),
-	// goal: z.string().min(1, { message: "Goal is required" }),
-})
-
-export type InfoSchemaType = z.infer<typeof infoSchema>
+import { InfoSchemaType, infoSchema } from "./types"
 
 export default function Page() {
 	const { push } = useRouter()
