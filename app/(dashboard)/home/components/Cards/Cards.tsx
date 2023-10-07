@@ -47,6 +47,7 @@ export function PrototypeCard() {
 					src={prototypeInfographic}
 					alt={"prototypeInfographic"}
 					component={Image}
+					priority={true}
 				/>
 			</Box>
 		</Flex>
