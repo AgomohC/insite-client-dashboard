@@ -59,7 +59,7 @@ export default function CustomSelect({
 				}}
 				rightSection={<ExpandMore className={styles.icon} />}
 				data={data}
-				allowDeselect
+				allowDeselect={false}
 				checkIconPosition={undefined}
 				defaultValue={defaultValue}
 			/>
@@ -84,7 +84,7 @@ export default function CustomSelect({
 				}}
 				rightSection={<ExpandMore className={styles.icon} />}
 				data={data}
-				allowDeselect
+				allowDeselect={false}
 				checkIconPosition={undefined}
 				defaultValue={defaultValue}
 				onChange={onChange}

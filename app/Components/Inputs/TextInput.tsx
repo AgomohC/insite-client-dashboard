@@ -3,7 +3,7 @@ import styles from "./Input.module.css"
 import { TextInput } from "react-hook-form-mantine"
 import { TextInput as MantineTextInput } from "@mantine/core"
 import type { Control } from "react-hook-form"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import cx from "clsx"
 
 interface IProps {
@@ -30,7 +30,6 @@ export default function CustomTextInput({
 	className,
 }: IProps) {
 	const [focused, setFocused] = useState(false)
-	const ref = useRef<HTMLInputElement>(null)
 	const [value, setValue] = useState("")
 	if (control) {
 		return (
@@ -43,7 +42,7 @@ export default function CustomTextInput({
 				control={control}
 				classNames={{
 					input: cx(styles.input, {
-						[styles.inputFocus]: focused || !!value,
+						[styles.inputFocus]: focused || value,
 					}),
 					error: styles.error,
 					wrapper: styles.wrapper,
