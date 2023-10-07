@@ -5,10 +5,10 @@ export default function Home() {
 	return (
 		<main>
 			<Box w='50rem'>
-				<DragAndDrop
+				{/* <DragAndDrop
 					type='image'
 					title='upload csv'
-				/>
+				/> */}
 			</Box>
 		</main>
 	)
