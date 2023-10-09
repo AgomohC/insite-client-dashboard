@@ -32,6 +32,14 @@ import Trash from "./Trash.svg"
 import Excel from "./Excel.svg"
 import Copy from "./Copy.svg"
 import Lock from "./Lock.svg"
+import Interview from "./Interview.svg"
+import InterviewFilled from "./InterviewFilled.svg"
+import Scale from "./Scale.svg"
+import ScaleFilled from "./ScaleFilled.svg"
+import NumberScale from "./NumberScale.svg"
+import StarScale from "./StarScale.svg"
+import EmojiScale from "./EmojiScale.svg"
+import Success from "./SuccessIcon.svg"
 export {
 	Arrow,
 	Check,
@@ -40,6 +48,7 @@ export {
 	Copy,
 	Design,
 	Desktop,
+	EmojiScale,
 	Excel,
 	ExpandMore,
 	Flows,
@@ -48,6 +57,8 @@ export {
 	Home,
 	Hourglass,
 	Image,
+	Interview,
+	InterviewFilled,
 	KebabMenu,
 	Link,
 	Lock,
@@ -56,13 +67,18 @@ export {
 	Manual,
 	Mobile,
 	New,
+	NumberScale,
 	Prototype,
 	Record,
 	Rename,
 	Requests,
+	Scale,
+	ScaleFilled,
 	Schedule,
 	Search,
 	Settings,
+	StarScale,
+	Success,
 	Tablet,
 	Testers,
 	Timed,
