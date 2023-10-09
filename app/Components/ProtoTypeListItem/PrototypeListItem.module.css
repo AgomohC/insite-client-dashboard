@@ -9,6 +9,7 @@
 	background: var(--mantine-color-white);
 	cursor: pointer;
 	transition: all 0.3s ease;
+	height: 6.4rem;
 }
 .headActive {
 	border-bottom-left-radius: 0;
@@ -149,7 +150,9 @@
 .arrowIcon svg {
 	fill: var(--mantine-color-brand-4);
 }
-
+.questionCard {
+	border-radius: 1.6rem;
+}
 .instruction {
 	height: 5.6rem;
 	background: var(--mantine-color-white);
@@ -161,4 +164,30 @@
 	color: #565656;
 	font-size: 1.4rem;
 	line-height: 2rem;
+}
+
+.feedbackCard {
+	flex: 1 0 0;
+	border-radius: 0.8rem;
+	box-shadow: -2.65533px 4.64683px 29.8725px 0px rgba(214, 214, 214, 0.25);
+	border: 1px solid #f2f4f7;
+}
+.feedbackCardTitle {
+	color: #717171;
+	letter-spacing: -0.16px;
+}
+.checkBox {
+	width: 2.4rem;
+	height: 2.4rem;
+	cursor: pointer;
+}
+.check {
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	background: var(--mantine-color-brand-4);
+	border: 0.262px solid #eee;
+}
+.check svg {
+	fill: var(--mantine-color-white);
 }

@@ -33,11 +33,15 @@ import {
 	Complete,
 	Arrow,
 	ExpandMore,
+	NumberScale,
+	StarScale,
+	EmojiScale,
 } from "@/public/icons"
-import Link from "next/link"
+import FeedbackCard from "./FeedbackCard"
+import RatingCard from "./RatingCard"
 
 interface IProps {
-	requestType: "Tasks" | "Feedbacks"
+	requestType: string
 	processName: string
 	prototypeType: "figma" | "sketch"
 	prototypeLink: string
@@ -49,8 +53,9 @@ interface IProps {
 
 const interviewsFormSchema = z.object({
 	feedbackType: z.literal("Interview"),
-	recordingOption: z.enum(["video", "audio"]),
-	question: z.string(),
+	question: z
+		.string({ required_error: "Question is required" })
+		.min(1, { message: "Question is required" }),
 })
 
 type interviewsFormSchemaType = z.infer<typeof interviewsFormSchema>
@@ -59,14 +64,17 @@ const TaskFormSchema = z.object({
 	instruction: z.string().min(1, {
 		message: "Instruction must be a string",
 	}),
-	type: z.enum(["timed", "recorded"]),
+	type: z
+		.array(z.enum(["timed", "recorded"]))
+		.min(1)
+		.max(2),
 })
 type TaskSchemaFormType = z.infer<typeof TaskFormSchema>
 
 export const ratingsFormSchema = z.object({
-	feedbackType: z.literal("Rating"),
+	feedbackType: z.literal("Scale"),
 	question: z.string(),
-	ratingType: z.enum(["number", "star"]),
+	ratingType: z.enum(["number", "star", "experience", ""]),
 	lowerLabel: z.string(),
 	upperLabel: z.string(),
 	scale: z.enum(["5", "10", "15", "20"]),
@@ -85,31 +93,36 @@ export default function PrototypeListItem({
 }: IProps) {
 	const [instructions, setInstructions] = useState<string[]>([])
 	const [addNew, setAddNew] = useState<boolean>(true)
-	const [interviewQuestions, setInterviewQuestions] = useState<
-		{ question: string; recordingOption: "video" | "audio" }[]
+	const [interviewQuestions, setInterviewQuestions] = useState<string[]>([])
+	const [savedInterviewQuestions, setSavedInterviewQuestions] = useState<
+		string[]
 	>([])
+	const [recordingOption, setRecordingOption] = useState<
+		"" | "video" | "audio"
+	>("")
 
 	const [ratingQuestions, setRatingQuestions] = useState<
 		ratingsFormSchemaType[]
 	>([])
 
 	const modifiedFeedback = useMemo(() => {
-		const modifiedInterview = interviewQuestions.map(interview => ({
-			...interview,
-			question: interview.question,
+		const modifiedInterview = savedInterviewQuestions.map(interview => ({
+			question: interview,
 			type: "Interview",
 		}))
 		const modifiedRating = ratingQuestions.map(rating => ({
 			...rating,
 			question: rating.question,
-			type: "Rating",
+			type: "Scale",
 		}))
 
 		return [...modifiedInterview, ...modifiedRating]
-	}, [interviewQuestions, ratingQuestions])
+	}, [savedInterviewQuestions, ratingQuestions])
 
-	const [feedback, setFeedback] = useState<"Interview" | "Rating" | "">("")
-
+	const [feedback, setFeedback] = useState<"Interview" | "Scale" | "">("")
+	const [ratingType, setRatingType] = useState<
+		"" | "number" | "star" | "experience"
+	>("")
 	const {
 		handleSubmit: handleTaskSubmit,
 		control: TaskControl,
@@ -119,7 +132,7 @@ export default function PrototypeListItem({
 		watch: watchTaskValues,
 	} = useForm<TaskSchemaFormType>({
 		resolver: zodResolver(TaskFormSchema),
-		defaultValues: { instruction: "", type: "timed" },
+		defaultValues: { instruction: "", type: [] },
 	})
 
 	const {
@@ -138,11 +151,13 @@ export default function PrototypeListItem({
 		handleSubmit: handleRatingSubmit,
 		control: RatingControl,
 		reset: RatingReset,
+		setValue: RatingSetValue,
+		watch: RatingWatchValue,
 	} = useForm<ratingsFormSchemaType>({
 		resolver: zodResolver(ratingsFormSchema),
 		defaultValues: {
-			feedbackType: "Rating",
-			ratingType: "number",
+			feedbackType: "Scale",
+			ratingType: "",
 			question: "",
 			lowerLabel: "",
 			upperLabel: "",
@@ -171,22 +186,19 @@ export default function PrototypeListItem({
 	const interviewSubmitHandler: SubmitHandler<
 		interviewsFormSchemaType
 	> = async values => {
-		const { question, recordingOption } = values
+		const { question } = values
 
-		setInterviewQuestions(oldQuestions => [
-			...oldQuestions,
-			{ question, recordingOption },
-		])
+		setInterviewQuestions(oldQuestions => [...oldQuestions, question])
 		InterviewReset()
-		setFeedback("")
 	}
 
 	const ratingSubmitHandler: SubmitHandler<
 		ratingsFormSchemaType
 	> = async values => {
 		setRatingQuestions(question => [...question, values])
-		RatingReset()
 		setFeedback("")
+		setRatingType("")
+		RatingReset()
 	}
 
 	return (
@@ -315,9 +327,19 @@ export default function PrototypeListItem({
 								</Group>
 								<CustomSwitch
 									label='timed'
-									active={watchTaskValues("type") === "timed"}
+									active={
+										watchTaskValues("type").indexOf("timed") > -1
+									}
 									onChange={() => {
-										TaskSetValue("type", "timed")
+										const type = getValues("type")
+										if (type.indexOf("timed") === -1) {
+											TaskSetValue("type", ["timed", ...type])
+										} else {
+											TaskSetValue(
+												"type",
+												type.filter(t => t !== "timed")
+											)
+										}
 									}}
 								/>
 							</Flex>
@@ -333,10 +355,20 @@ export default function PrototypeListItem({
 									</Text>
 								</Group>
 								<CustomSwitch
-									active={watchTaskValues("type") === "recorded"}
+									active={
+										watchTaskValues("type").indexOf("recorded") > -1
+									}
 									label='recorded'
 									onChange={() => {
-										TaskSetValue("type", "recorded")
+										const type = getValues("type")
+										if (type.indexOf("recorded") === -1) {
+											TaskSetValue("type", ["recorded", ...type])
+										} else {
+											TaskSetValue(
+												"type",
+												type.filter(t => t !== "recorded")
+											)
+										}
 									}}
 								/>
 							</Flex>
@@ -347,7 +379,10 @@ export default function PrototypeListItem({
 								variant='outlined'
 								type='button'
 								rightSection={<New className={styles.newIcon} />}
-								disabled={!watchTaskValues("instruction")}
+								disabled={
+									!watchTaskValues("instruction") ||
+									watchTaskValues("type").length < 1
+								}
 								action={() => {
 									if (!watchTaskValues("instruction")) {
 										return
@@ -394,21 +429,52 @@ export default function PrototypeListItem({
 
 				{requestType === "Feedbacks" ? (
 					<>
-						<Collapse in={addNew && feedback === ""}>
+						<Collapse in={addNew}>
 							<Flex className={styles.formActive}>
-								<CustomSelect
+								{/* <CustomSelect
 									name='FeedbackType'
 									data={[
 										{ label: "Interview", value: "Interview" },
-										{ label: "Rating", value: "Rating" },
+										{ label: "Scale", value: "Scale" },
 									]}
 									placeholder='Feedback Type'
 									value={feedback}
 									onChange={value => {
-										setFeedback(value as "" | "Interview" | "Rating")
+										setFeedback(value as "" | "Interview" | "Scale")
 										setAddNew(false)
 									}}
+								/> */}
+								<FeedbackCard
+									value={feedback}
+									onChange={e => {
+										if (e === feedback) {
+											setFeedback("")
+										} else {
+											setFeedback(e)
+										}
+									}}
 								/>
+								<Collapse in={!!feedback}>
+									<Flex
+										w='100%'
+										pt='1.6rem'
+										justify='center'
+									>
+										<CustomButton
+											title='Select Option'
+											variant='outlined'
+											type='button'
+											action={() => {
+												setAddNew(false)
+											}}
+											rightSection={
+												<Center className={styles.arrowIcon}>
+													<Arrow />
+												</Center>
+											}
+										/>
+									</Flex>
+								</Collapse>
 							</Flex>
 						</Collapse>
 
@@ -453,7 +519,7 @@ export default function PrototypeListItem({
 										variant='outlined'
 										type='button'
 										action={() => {
-											if (interviewQuestions.length > 0) {
+											if (savedInterviewQuestions.length > 0) {
 												const interviewsParsed: PrototypeFlowType =
 													{
 														processName,
@@ -463,7 +529,8 @@ export default function PrototypeListItem({
 														prototypeType,
 														feedbackType:
 															"Interview" as "Interview",
-														questions: interviewQuestions,
+														questions: savedInterviewQuestions,
+														recordingOption,
 													}
 												onSave(interviewsParsed)
 												InterviewReset()
@@ -476,7 +543,7 @@ export default function PrototypeListItem({
 													status: "complete",
 													requestType,
 													prototypeType,
-													feedbackType: "Rating" as "Rating",
+													feedbackType: "Scale" as "Scale",
 													questions: ratingQuestions.map(q => ({
 														question: q.question,
 														ratingType: q.ratingType,
@@ -487,6 +554,7 @@ export default function PrototypeListItem({
 												}
 												onSave(ratingParsed)
 												RatingReset()
+												setRecordingOption("")
 											}
 										}}
 										rightSection={
@@ -507,6 +575,7 @@ export default function PrototypeListItem({
 								<Group
 									onClick={() => {
 										setFeedback("")
+										setAddNew(true)
 									}}
 									gap='1rem'
 									className={styles.formHead}
@@ -517,39 +586,94 @@ export default function PrototypeListItem({
 									</Text>
 								</Group>
 								<Divider />
-								<CustomTextInput
-									name='question'
-									placeholder='Question'
-									label='Question'
-									control={InterviewControl}
-									rightSection={
-										<HelpCircle className={styles.helpIcon} />
-									}
-								/>
+								{interviewQuestions.map(question => {
+									return (
+										<Flex
+											align='center'
+											justify='space-between'
+											key={question}
+											className={styles.instruction}
+										>
+											<Group gap='1.6rem'>
+												<Rename className={styles.newIcon} />
+												<Text className={styles.instructionText}>
+													{question}
+												</Text>
+											</Group>
+											<Record className={styles.helpIcon} />
+										</Flex>
+									)
+								})}
+								<Stack
+									p='1.6rem'
+									gap='1.6rem'
+									bg='white'
+									className={styles.questionCard}
+								>
+									<CustomTextInput
+										name='question'
+										placeholder='Question'
+										label='Question'
+										control={InterviewControl}
+										rightSection={
+											<HelpCircle className={styles.helpIcon} />
+										}
+									/>
+									<CustomButton
+										title='Add  Question'
+										// type='button'
+										variant='outlined'
+										fullWidth
+										type='submit'
+										// action={submitWithoutConfigure}
+										rightSection={
+											<Center className={styles.iconFill}>
+												<New />
+											</Center>
+										}
+									/>
+								</Stack>
 								<CustomSelect
 									data={[
 										{ label: "Video", value: "video" },
 										{ label: "Audio", value: "audio" },
 									]}
 									name='recordingOption'
-									control={InterviewControl}
 									placeholder='Recording Option'
+									value={recordingOption}
+									onChange={e =>
+										setRecordingOption(e as "audio" | "video" | "")
+									}
 								/>
 								<Group justify='flex-end'>
 									<CustomButton
 										title='Save'
 										variant='outlined'
-										type='submit'
+										// type='submit'
+										type='button'
+										disabled={
+											recordingOption.length < 1 ||
+											interviewQuestions.length < 1
+										}
 										rightSection={
 											<Center className={styles.arrowIcon}>
 												<Arrow />
 											</Center>
 										}
+										action={() => {
+											// setRecordingOption("")
+											setInterviewQuestions([])
+											setSavedInterviewQuestions(o => [
+												...o,
+												...interviewQuestions,
+											])
+											setFeedback("")
+										}}
 									/>
 								</Group>
 							</form>
 						</Collapse>
-						<Collapse in={feedback === "Rating" && !addNew}>
+						<Collapse in={feedback === "Scale" && !addNew}>
 							<form
 								className={styles.formActive}
 								onSubmit={handleRatingSubmit(ratingSubmitHandler)}
@@ -557,6 +681,7 @@ export default function PrototypeListItem({
 								<Group
 									onClick={() => {
 										setFeedback("")
+										setAddNew(true)
 									}}
 									gap='1rem'
 									className={styles.formHead}
@@ -567,64 +692,91 @@ export default function PrototypeListItem({
 									</Text>
 								</Group>
 								<Divider />
-								<CustomTextInput
-									name='question'
-									label='Question'
-									placeholder='Question'
-									control={RatingControl}
-									rightSection={
-										<HelpCircle className={styles.helpIcon} />
-									}
-								/>
-								<Group gap='1.6rem'>
-									<CustomSelect
-										data={[
-											{ label: "# Number", value: "number" },
-											{ label: "Star", value: "star" },
-										]}
-										name='ratingType'
-										control={RatingControl}
-										placeholder='Rating Type'
-									/>{" "}
-									<CustomSelect
-										data={[
-											{ label: "5", value: "5" },
-											{ label: "10", value: "10" },
-											{ label: "15", value: "15" },
-											{ label: "20", value: "20" },
-										]}
-										name='scale'
-										control={RatingControl}
-										placeholder='Scale'
-									/>
-								</Group>
 
-								<Group gap='1.6rem'>
-									<CustomTextInput
-										name='lowerLabel'
-										placeholder='Lower Label'
-										control={RatingControl}
-										label='Lower Label'
+								<Collapse in={RatingWatchValue("ratingType") === ""}>
+									<RatingCard
+										value={ratingType}
+										onChange={value => {
+											if (value === ratingType) {
+												setRatingType("")
+											} else {
+												setRatingType(value)
+											}
+										}}
 									/>
-									<CustomTextInput
-										name='upperLabel'
-										placeholder='Upper Label'
-										control={RatingControl}
-										label='Upper Label'
-									/>
-								</Group>
-								<Group justify='flex-end'>
-									<CustomButton
-										title='Save'
-										variant='outlined'
-										type='submit'
-										rightSection={
-											<Center className={styles.arrowIcon}>
-												<Arrow />
-											</Center>
-										}
-									/>
-								</Group>
+									<Group
+										justify='flex-end'
+										mt='1.6rem'
+									>
+										<CustomButton
+											title='Save'
+											variant='outlined'
+											type='button'
+											disabled={ratingType.length < 1}
+											rightSection={
+												<Center className={styles.arrowIcon}>
+													<Arrow />
+												</Center>
+											}
+											action={() => {
+												if (ratingType === "") return
+												RatingSetValue("ratingType", ratingType)
+											}}
+										/>
+									</Group>
+								</Collapse>
+								<Collapse in={RatingWatchValue("ratingType") !== ""}>
+									<Stack gap='1.6rem'>
+										<CustomTextInput
+											name='question'
+											label='Question'
+											placeholder='Question'
+											control={RatingControl}
+											rightSection={
+												<HelpCircle className={styles.helpIcon} />
+											}
+										/>
+
+										<CustomSelect
+											data={[
+												{ label: "5 points", value: "5" },
+												{ label: "10 points", value: "10" },
+												{ label: "15 points", value: "15" },
+												{ label: "20 points", value: "20" },
+											]}
+											name='scale'
+											control={RatingControl}
+											placeholder='Scale'
+										/>
+
+										<Group gap='1.6rem'>
+											<CustomTextInput
+												name='lowerLabel'
+												placeholder='Lower Label'
+												control={RatingControl}
+												label='Lower Label'
+											/>
+											<CustomTextInput
+												name='upperLabel'
+												placeholder='Upper Label'
+												control={RatingControl}
+												label='Upper Label'
+											/>
+										</Group>
+										<Group justify='flex-end'>
+											<CustomButton
+												title='Save'
+												variant='outlined'
+												type='submit'
+												rightSection={
+													<Center className={styles.arrowIcon}>
+														<Arrow />
+													</Center>
+												}
+											/>
+										</Group>
+									</Stack>
+								</Collapse>
 							</form>
 						</Collapse>
 					</>
