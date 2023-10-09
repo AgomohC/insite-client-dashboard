@@ -1,0 +1,22 @@
+.textBox {
+	border-radius: 7.5px;
+	border: 1.05px #fafafa;
+	background: #fafafa;
+	height: 3rem;
+	padding: 0 1.2rem;
+}
+
+.icon {
+	cursor: pointer;
+}
+.icon svg {
+	fill: var(--mantine-color-brand-4);
+}
+
+.iconLeft {
+	rotate: 90deg;
+}
+
+.iconRight {
+	rotate: -90deg;
+}

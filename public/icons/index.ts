@@ -42,7 +42,11 @@ import EmojiScale from "./EmojiScale.svg"
 import Success from "./SuccessIcon.svg"
 import Close from "./Close.svg"
 import Location from "./Location.svg"
+import Age from "./Age.svg"
+import Education from "./Education.svg"
+import LocationBig from "./LocationBig.svg"
 export {
+	Age,
 	Arrow,
 	Check,
 	Close,
@@ -51,6 +55,7 @@ export {
 	Copy,
 	Design,
 	Desktop,
+	Education,
 	EmojiScale,
 	Excel,
 	ExpandMore,
@@ -65,6 +70,7 @@ export {
 	KebabMenu,
 	Link,
 	Location,
+	LocationBig,
 	Lock,
 	Logo,
 	LogoSmall,
