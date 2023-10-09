@@ -4,10 +4,11 @@ import { PasswordInput } from "react-hook-form-mantine"
 import { PasswordInput as MantinePasswordInput } from "@mantine/core"
 import type { Control } from "react-hook-form"
 import cx from "clsx"
+import { useState } from "react"
 interface IProps {
 	name: string
 	disabled?: boolean
-	label?: string
+	label: string
 	placeholder?: string
 	required?: true
 	control?: Control<any, any>
@@ -27,6 +28,8 @@ export default function CustomPasswordInput({
 	value,
 	onChange,
 }: IProps) {
+	const [focused, setFocused] = useState(false)
+
 	if (control) {
 		return (
 			<PasswordInput
@@ -43,9 +46,16 @@ export default function CustomPasswordInput({
 					section: styles.section,
 					root: styles.root,
 					innerInput: styles.passwordInnerInput,
+					label: cx(styles.inputLabel, {
+						[styles.inputLabelFocus]: focused || !!value,
+					}),
 				}}
 				rightSection={rightSection}
 				visibilityToggleIcon={() => <></>}
+				onFocus={() => {
+					setFocused(true)
+				}}
+				onBlur={() => setFocused(false)}
 			/>
 		)
 	} else {
@@ -62,12 +72,21 @@ export default function CustomPasswordInput({
 					wrapper: styles.wrapper,
 					section: styles.section,
 					root: styles.root,
-					innerInput: styles.passwordInnerInput,
+					innerInput: cx(styles.passwordInnerInput, {
+						[styles.inputFocus]: focused || value,
+					}),
+					label: cx(styles.inputLabel, {
+						[styles.inputLabelFocus]: focused || !!value,
+					}),
 				}}
 				rightSection={rightSection}
 				visibilityToggleIcon={() => <></>}
 				value={value}
 				onChange={onChange}
+				onFocus={() => {
+					setFocused(true)
+				}}
+				onBlur={() => setFocused(false)}
 			/>
 		)
 	}

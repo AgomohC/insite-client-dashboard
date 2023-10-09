@@ -26,11 +26,10 @@ export default function CustomTextInput({
 	required,
 	control,
 	rightSection,
-	// value,
+	value,
 	className,
 }: IProps) {
 	const [focused, setFocused] = useState(false)
-	const [value, setValue] = useState("")
 	if (control) {
 		return (
 			<TextInput
@@ -58,9 +57,6 @@ export default function CustomTextInput({
 				}}
 				onBlur={() => setFocused(false)}
 				className={className}
-				onChange={e => {
-					setValue(e.target.value)
-				}}
 			/>
 		)
 	} else {
@@ -86,9 +82,7 @@ export default function CustomTextInput({
 				rightSection={rightSection}
 				onFocus={() => setFocused(true)}
 				onBlur={() => setFocused(false)}
-				onChange={e => {
-					setValue(e.target.value)
-				}}
+				value={value}
 			/>
 		)
 	}

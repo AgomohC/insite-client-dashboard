@@ -14,6 +14,7 @@ interface IProps {
 	required?: true
 	control?: Control<any, any>
 	className?: string
+	value?: string
 }
 export default function CustomTextArea({
 	name,
@@ -23,9 +24,9 @@ export default function CustomTextArea({
 	label,
 	required,
 	className,
+	value,
 }: IProps) {
 	const [focused, setFocused] = useState(false)
-	const [value, setValue] = useState("")
 
 	if (control) {
 		return (
@@ -52,9 +53,6 @@ export default function CustomTextArea({
 				}}
 				onBlur={() => setFocused(false)}
 				className={className}
-				onChange={e => {
-					setValue(e.target.value)
-				}}
 			/>
 		)
 	} else {
@@ -81,9 +79,6 @@ export default function CustomTextArea({
 				}}
 				onBlur={() => setFocused(false)}
 				className={className}
-				onChange={e => {
-					setValue(e.target.value)
-				}}
 			/>
 		)
 	}

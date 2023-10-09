@@ -30,14 +30,6 @@ export default function CustomSelect({
 	value,
 	onChange,
 }: IProps) {
-	// let modifiedData = useMemo(() => {
-	// 	if (data.every(datum => typeof datum === "string")) {
-	// 		return ["Select Option", ...data]
-	// 	} else {
-	// 		return [{ label: "Select Option", value: "" }, ...data]
-	// 	}
-	// }, [data])
-
 	if (control) {
 		return (
 			<Select

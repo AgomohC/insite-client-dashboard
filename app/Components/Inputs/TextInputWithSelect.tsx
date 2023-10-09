@@ -9,11 +9,11 @@ import cx from "clsx"
 interface IProps {
 	name: string
 	disabled?: boolean
-	label?: string
+	label: string
 	placeholder?: string
 	required?: true
 	selectValue: "figma" | "sketch"
-
+	textInputValue?: string
 	defaultSelectValue: string
 	rightSection?: React.ReactNode
 	onSelectChange: (src: "figma" | "sketch") => void
@@ -35,11 +35,13 @@ export default function CustomTextInputWithSelect({
 	onSelectChange,
 	selectValue,
 	selectOptions,
+	textInputValue,
 }: IProps) {
 	const combobox = useCombobox({
 		onDropdownClose: () => combobox.resetSelectedOption(),
 	})
-	const [value, setValue] = useState<"figma" | "sketch">(selectValue)
+	const [focused, setFocused] = useState(false)
+	const [sValue, setSValue] = useState<"figma" | "sketch">(selectValue)
 
 	function getLabel(value: string) {
 		const isString = selectOptions.some(option => option === "string")
@@ -88,19 +90,29 @@ export default function CustomTextInputWithSelect({
 			label={label}
 			placeholder={placeholder}
 			required={required}
+			onFocus={() => {
+				setFocused(true)
+			}}
+			onBlur={() => setFocused(false)}
 			control={control}
 			classNames={{
-				input: cx(styles.input, styles.textSelectInput),
+				input: cx(styles.input, styles.textSelectInput, {
+					[styles.inputFocus]: focused || !!textInputValue,
+				}),
 				error: styles.error,
 				wrapper: styles.wrapper,
+				label: cx(styles.inputLabel, styles.inputWithSelectLabel, {
+					[styles.inputLabelFocus]: focused || !!textInputValue,
+				}),
 				section: styles.textSelectSection,
+				root: styles.root,
 			}}
 			rightSection={rightSection}
 			leftSection={
 				<Combobox
 					store={combobox}
 					onOptionSubmit={val => {
-						setValue(val as "figma" | "sketch")
+						setSValue(val as "figma" | "sketch")
 						setLabelValue(getLabel(val))
 						onSelectChange(val as "figma" | "sketch")
 						combobox.closeDropdown()
