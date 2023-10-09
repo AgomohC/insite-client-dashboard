@@ -91,7 +91,7 @@ export default function Page() {
 		})
 	}, [configuredRequests, requests])
 
-	const { handleSubmit, control, setValue, reset, watch } =
+	const { handleSubmit, control, setValue, reset, watch, trigger } =
 		useForm<BasePrototypeSchemaType>({
 			resolver: zodResolver(basePrototypeSchema),
 			defaultValues: {
@@ -99,6 +99,7 @@ export default function Page() {
 				processName: "",
 				prototypeLink: "",
 				prototypeType: prototypeSource,
+				requestType: "",
 			},
 		})
 	const submitHandler: SubmitHandler<
@@ -108,6 +109,27 @@ export default function Page() {
 		setActive(`${values.processName}${requests.length}`)
 		setOpen(false)
 		reset()
+	}
+
+	const submitWithoutConfigure = async () => {
+		const passedValidation = await trigger([
+			"processName",
+			"prototypeLink",
+			"requestType",
+		])
+		if (passedValidation) {
+			setRequests(request => [
+				...request,
+				{
+					processName: watch("processName"),
+					prototypeLink: watch("prototypeLink"),
+					requestType: watch("requestType"),
+					status: "incomplete",
+					prototypeType: prototypeSource,
+				},
+			])
+			reset()
+		}
 	}
 
 	return (
@@ -153,8 +175,10 @@ export default function Page() {
 												request.status === "complete" &&
 												configuredRequests.length > 0 &&
 												val.status === "complete" &&
-												configuredRequests.length ===
-													requests.length - 1
+												(configuredRequests.length ===
+													requests.length - 1 ||
+													configuredRequests.length ===
+														requests.length)
 										)
 									)
 								)
@@ -173,6 +197,7 @@ export default function Page() {
 							placeholder='Process Name'
 							control={control}
 							label='Process Name'
+							value={watch("processName")}
 						/>
 						<CustomTextInputWithSelect
 							name='prototypeLink'
@@ -185,11 +210,13 @@ export default function Page() {
 								setPrototypeSource(src)
 								setValue("prototypeType", src)
 							}}
+							label='Prototype Link'
 						/>
 						<CustomSelect
 							name='requestType'
 							control={control}
 							data={[
+								{ label: "", value: "" },
 								{ label: "Tasks", value: "Tasks" },
 								{ label: "Feedbacks", value: "Feedbacks" },
 							]}
@@ -214,7 +241,7 @@ export default function Page() {
 				</Collapse>
 				{
 					// requests.every(request => request.status === "complete") &&
-					requests.length > 0 ? (
+					requests.length > 0 && !open ? (
 						<Group justify='space-between'>
 							<CustomButton
 								title='New Process'
@@ -262,19 +289,7 @@ export default function Page() {
 								type='button'
 								variant='outlined'
 								fullWidth
-								action={() => {
-									setRequests(request => [
-										...request,
-										{
-											processName: watch("processName"),
-											prototypeLink: watch("prototypeLink"),
-											requestType: watch("requestType"),
-											status: "incomplete",
-											prototypeType: prototypeSource,
-										},
-									])
-									reset()
-								}}
+								action={submitWithoutConfigure}
 								rightSection={
 									<Center className={styles.iconFill}>
 										<New />
