@@ -12,6 +12,7 @@ interface IProps {
 	disabled?: boolean
 	type: "button" | "submit"
 	loading?: boolean
+	className?: string
 }
 
 export default function CustomButton({
@@ -24,6 +25,7 @@ export default function CustomButton({
 	disabled,
 	loading,
 	type,
+	className,
 }: IProps) {
 	return (
 		<Button
@@ -48,6 +50,7 @@ export default function CustomButton({
 			disabled={disabled}
 			loading={loading}
 			type={type}
+			className={className}
 		>
 			{title}
 		</Button>
