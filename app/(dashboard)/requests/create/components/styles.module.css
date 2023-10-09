@@ -215,14 +215,51 @@
 .drawerInner {
 	z-index: 300;
 }
+.drawerBody {
+	padding: 0;
+}
 
 .drawerContent {
 	background: var(--mantine-color-white);
 	border-top-left-radius: 1.6rem;
 	border-bottom-left-radius: 1.6rem;
 	box-shadow: 0px 2px 9px 8px rgba(224, 224, 224, 0.25);
+	min-width: 43rem;
+	max-width: none;
 }
-
+.drawerHeader {
+	border-radius: 0.8rem 3.2rem 0.8rem 0.8rem;
+	background: var(--mantine-color-gray-1);
+	padding: 2.4rem 3.2rem 1.6rem 3.2rem;
+}
+.drawerInputs {
+	border-radius: 2rem;
+	border: 1px solid rgba(238, 238, 238, 0.7);
+}
+.checkBox {
+	width: 2.4rem;
+	height: 2.4rem;
+	cursor: pointer;
+}
+.check {
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	background: var(--mantine-color-brand-4);
+	border: 0.262px solid #eee;
+}
+.check svg {
+	fill: var(--mantine-color-white);
+}
+.drawerForm {
+	border-radius: 1.6rem;
+}
+.drawerFooter {
+	border-top: 1px solid #f1f1f1;
+}
+.border {
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
 .linkIcon {
 	fill: var(--mantine-color-green-1);
 }
@@ -246,4 +283,13 @@
 .formHeadIcon {
 	fill: var(--mantine-color-brand-4);
 	rotate: 90deg;
+}
+.chip {
+	border-radius: 1.2rem;
+	border: 1px solid #f2f4f7;
+	background: var(--mantine-color-white);
+	box-shadow: 0px 4px 27px 0px rgba(122, 133, 153, 0.12);
+}
+.chipActive {
+	border: 1px solid var(--mantine-color-green-1);
 }

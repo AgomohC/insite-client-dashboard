@@ -1,13 +1,28 @@
 "use client"
 import CardLayoutWithHead from "../../../../components/CardLayoutWithHeader"
 import styles from "../../../../components/styles.module.css"
-import { Flex, Stack, Text, Drawer, ScrollArea } from "@mantine/core"
-import { LogoSmall, New } from "@/public/icons"
+import {
+	Flex,
+	Stack,
+	Text,
+	Drawer,
+	ScrollArea,
+	Group,
+	Center,
+	Box,
+} from "@mantine/core"
+import { LogoSmall, New, Close, Check, Location, Arrow } from "@/public/icons"
 import { useDisclosure } from "@mantine/hooks"
 import avatar1 from "@/public/images/avatar-1.png"
 import avatar2 from "@/public/images/avatar-2.png"
 import avatar3 from "@/public/images/avatar-3.png"
 import TestingGroupItem from "../components/TestingGroupItem/TestingGroupItem"
+import CustomTextInput from "@/app/Components/Inputs/TextInput"
+import CustomSelect from "@/app/Components/Inputs/Select"
+import { useState } from "react"
+import cx from "clsx"
+import CustomSwitch from "@/app/Components/CustomSwitch/CustomSwitch"
+import CustomButton from "@/app/Components/Button/Button"
 
 const testingGroups = [
 	{ name: "Students", number: 34, images: [avatar1, avatar2] },
@@ -17,8 +32,12 @@ const testingGroups = [
 	{ name: "Bankers", number: 34, images: [avatar1, avatar3] },
 	{ name: "Designers", number: 34, images: [avatar2, avatar3] },
 ]
+
+const criteriaList = ["Location", "Age", "Language", "Education Level"]
 export default function Page() {
 	const [opened, { open, close }] = useDisclosure()
+	const [criteria, setCriteria] = useState<string[]>([])
+	const [area, setArea] = useState<boolean>(false)
 	return (
 		<CardLayoutWithHead
 			type='prototype'
@@ -85,51 +104,296 @@ export default function Page() {
 			<Drawer
 				opened={opened}
 				onClose={close}
-				title='Testers'
 				position='right'
 				scrollAreaComponent={ScrollArea.Autosize}
+				withCloseButton={false}
 				classNames={{
 					inner: styles.drawerInner,
 					content: styles.drawerContent,
+					body: styles.drawerBody,
 				}}
 			>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore at
-				pariatur eligendi molestiae recusandae, maiores deleniti, aspernatur
-				necessitatibus impedit quibusdam nam aliquam quo repellat beatae
-				molestias consectetur tempora tenetur? Tempora, quibusdam quidem
-				tenetur asperiores odit ratione libero explicabo vero ipsum ullam
-				praesentium fuga pariatur quasi dolor dignissimos! Magni obcaecati
-				sunt asperiores eligendi voluptatibus hic quisquam ratione adipisci,
-				libero aliquam debitis optio animi harum esse ad voluptates
-				exercitationem quidem soluta autem repellat fugit quos cum
-				repellendus quibusdam. Officiis temporibus suscipit maiores omnis?
-				Ipsa cum, libero adipisci id quisquam eaque accusamus, magni
-				blanditiis, consequatur asperiores suscipit voluptate? Veniam
-				aliquid, nam tempore, facilis, corporis laboriosam aut asperiores
-				vero ducimus officia sit praesentium cumque? Corporis illum quod
-				blanditiis explicabo esse repellat ea aut aspernatur aliquam
-				excepturi ab veritatis vel, impedit atque deleniti nostrum
-				temporibus! Earum incidunt rem adipisci harum mollitia repellendus
-				commodi quisquam aperiam. Nulla nihil porro quo corrupti maxime eos
-				doloremque quisquam assumenda excepturi quasi. Sequi excepturi
-				voluptatum accusantium doloribus blanditiis doloremque ipsa,
-				laudantium sint corporis sunt similique, fugit non placeat animi
-				odio magnam hic in tenetur nihil autem adipisci minus minima.
-				Asperiores, reprehenderit! Magni officiis provident ad, quas
-				perferendis maxime adipisci doloribus repudiandae dolore, facilis
-				fugit sapiente est ut at porro voluptatibus repellat sunt veritatis
-				magnam similique. Modi, nihil ratione omnis facilis, unde officiis
-				tempora, autem eius dolore consequatur veniam perspiciatis quia.
-				Debitis non magni consectetur eius ratione inventore enim incidunt
-				vel, voluptates magnam aliquam, est mollitia nobis obcaecati
-				cupiditate officia dolore voluptatem, facere quibusdam veritatis!
-				Aut iure possimus hic. Doloremque iusto cum in eveniet dolore nulla
-				perferendis officiis, asperiores officia magni tempore ullam
-				veritatis quod at, dignissimos quos qui assumenda deserunt labore
-				doloribus beatae totam mollitia? Molestias pariatur iusto omnis
-				aliquam non dolore, blanditiis eius consectetur dolorum possimus
-				fugit laborum expedita doloribus veritatis nobis itaque? Quasi
-				quisquam dignissimos ut aspernatur architecto.
+				<Stack
+					className={styles.drawerHeader}
+					gap='1.6rem'
+				>
+					<Group
+						justify='flex-end'
+						w='100%'
+					>
+						<Close
+							className={styles.formHead}
+							onClick={close}
+						/>
+					</Group>
+					<Group>
+						<Stack>
+							<Text
+								fz='2.4rem'
+								fw={600}
+								lh='2.5rem'
+								lts={-0.72}
+								c={"var(--mantine-color-brand-4)"}
+								component='h5'
+							>
+								Create New Group
+							</Text>
+
+							<Text
+								fz='1.6rem'
+								fw='400'
+								lh='2.3rem'
+								c='#565656'
+								component='h6'
+							>
+								Select preferred criteria for testers
+							</Text>
+						</Stack>
+					</Group>
+				</Stack>
+
+				<Flex
+					pt='1.6rem'
+					pb='1.6rem'
+					pl='3.2rem'
+					pr='3.2rem'
+					direction='column'
+					w='100%'
+					gap='2.4rem'
+				>
+					<Stack
+						pt='2.2rem'
+						className={styles.drawerInputs}
+						pb='2.2rem'
+						pl='1.6rem'
+						pr='1.6rem'
+						w='100%'
+						gap='2.1rem'
+					>
+						<Stack gap='1.6rem'>
+							<CustomTextInput
+								name='title'
+								label='Group Title'
+								placeholder='Group Title'
+							/>
+							<CustomSelect
+								name='Number of Testers'
+								placeholder='Number of Testers'
+								data={[
+									{ label: "100 testers", value: "100" },
+									{ label: "200 testers", value: "200" },
+									{ label: "300 testers", value: "300" },
+									{ label: "400 testers", value: "400" },
+								]}
+							/>
+						</Stack>
+
+						<Stack gap='0.9rem'>
+							<Text
+								lh='2rem'
+								fz='1.4rem'
+								c='#565656'
+							>
+								Group Criteria&apos;s
+							</Text>
+
+							<Flex
+								gap='1rem'
+								wrap='wrap'
+							>
+								{criteriaList.map(item => (
+									<Group
+										gap='0.8rem'
+										pl='1.6rem'
+										pr='2.4rem'
+										key={item}
+										h='4rem'
+										className={cx(styles.chip, {
+											[styles.chipActive]: criteria.includes(item),
+										})}
+									>
+										<Box
+											className={styles.checkBox}
+											onClick={() => {
+												if (criteria.includes(item)) {
+													setCriteria(c =>
+														c.filter(d => d !== item)
+													)
+												} else {
+													setCriteria(c => [...c, item])
+												}
+											}}
+										>
+											{criteria.includes(item) ? (
+												<Center className={styles.check}>
+													<Check />
+												</Center>
+											) : (
+												<svg
+													xmlns='http://www.w3.org/2000/svg'
+													width='24'
+													height='24'
+													viewBox='0 0 24 24'
+													fill='none'
+												>
+													<rect
+														x='0.196568'
+														y='0.196629'
+														width='23.6068'
+														height='23.6067'
+														rx='11.8034'
+														fill='#FAFAFA'
+													/>
+													<rect
+														x='0.196568'
+														y='0.196629'
+														width='23.6068'
+														height='23.6067'
+														rx='11.8034'
+														stroke='#E4E4E4'
+														stroke-width='0.393258'
+													/>
+												</svg>
+											)}
+										</Box>
+										<Text
+											c='var(--mantine-brand-4)'
+											fz='1.4rem'
+											fw={criteria.includes(item) ? 500 : 400}
+											lts={-0.21}
+											lh='1.862rem'
+										>
+											{item}
+										</Text>
+									</Group>
+								))}
+							</Flex>
+						</Stack>
+					</Stack>
+				</Flex>
+				<Flex
+					pb='1.6rem'
+					pl='3.2rem'
+					pr='3.2rem'
+					pt='0.8rem'
+					w='100%'
+				>
+					<Flex
+						pt='2.4rem'
+						pb='2.4rem'
+						pr='1.3rem'
+						pl='1.3rem'
+						direction='column'
+						w='100%'
+						bg='#F8F8F8'
+						className={styles.drawerForm}
+					>
+						<Stack gap='0.8rem'>
+							<CustomTextInput
+								name='Country'
+								label='Country'
+								placeholder='Country'
+							/>
+							<CustomSelect
+								name='State'
+								placeholder='State'
+								data={[
+									{ label: "Abia", value: "Abia" },
+									{ label: "Adamawa", value: "Adamawa" },
+								]}
+							/>
+						</Stack>
+
+						<Group
+							justify='space-between'
+							mt='1.6rem'
+						>
+							<Group
+								gap='0.6rem'
+								align='center'
+							>
+								<Center p='0.6rem'>
+									<Location />
+								</Center>
+								<Text
+									c='var(--mantine-color-brand-4)'
+									fz='1.4rem'
+									lh='2rem'
+								>
+									Specify Area
+								</Text>
+							</Group>
+							<CustomSwitch
+								label='Specific Area'
+								active={area}
+								onChange={() => {
+									setArea(a => !a)
+								}}
+							/>
+						</Group>
+
+						<Group
+							gap='1.6rem'
+							mt='1.6rem'
+							pt='1.6rem'
+							pb='1.6rem'
+							className={styles.border}
+						>
+							<CustomSelect
+								name='Minimum Age'
+								placeholder='Minimum Age'
+								data={[
+									{ label: "50", value: "50" },
+									{ label: "100", value: "100" },
+								]}
+							/>
+							<CustomSelect
+								name='Maximum Age'
+								placeholder='Maximum Age'
+								data={[
+									{ label: "50", value: "50" },
+									{ label: "100", value: "100" },
+								]}
+							/>
+						</Group>
+
+						<Group
+							mt='1.6rem'
+							pt='1.6rem'
+							pb='1.6rem'
+							className={styles.border}
+						>
+							<CustomSelect
+								name='Education'
+								placeholder='Education'
+								data={[
+									{ label: "Uneducated", value: "Uneducated" },
+									{ label: "Educated", value: "Educated" },
+								]}
+							/>
+						</Group>
+					</Flex>
+				</Flex>
+				<Group
+					align='center'
+					justify='flex-end'
+					pt='1.4rem'
+					pb='1.4rem'
+					pr='2.3rem'
+					mt='6rem'
+					className={styles.drawerFooter}
+				>
+					<CustomButton
+						title='Select Group'
+						type='button'
+						variant='filled'
+						rightSection={
+							<Center className={styles.icon}>
+								<Arrow />
+							</Center>
+						}
+					/>
+				</Group>
 			</Drawer>
 		</CardLayoutWithHead>
 	)

@@ -40,9 +40,12 @@ import NumberScale from "./NumberScale.svg"
 import StarScale from "./StarScale.svg"
 import EmojiScale from "./EmojiScale.svg"
 import Success from "./SuccessIcon.svg"
+import Close from "./Close.svg"
+import Location from "./Location.svg"
 export {
 	Arrow,
 	Check,
+	Close,
 	Complete,
 	Controlled,
 	Copy,
@@ -61,6 +64,7 @@ export {
 	InterviewFilled,
 	KebabMenu,
 	Link,
+	Location,
 	Lock,
 	Logo,
 	LogoSmall,
