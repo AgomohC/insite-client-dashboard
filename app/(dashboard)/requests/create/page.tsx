@@ -15,7 +15,7 @@ import { InfoSchemaType, infoSchema } from "./types"
 
 export default function Page() {
 	const { push } = useRouter()
-	const { handleSubmit, control } = useForm<InfoSchemaType>({
+	const { handleSubmit, control, watch } = useForm<InfoSchemaType>({
 		resolver: zodResolver(infoSchema),
 		defaultValues: { title: "", description: "", goal: "" },
 	})
@@ -61,12 +61,14 @@ export default function Page() {
 							placeholder='Request Title'
 							control={control}
 							label='Request Title'
+							value={watch("title")}
 						/>
 						<CustomTextArea
 							name='description'
 							placeholder='Description'
 							control={control}
 							label='Description'
+							value={watch("description")}
 						/>
 						<CustomSelect
 							name='goal'

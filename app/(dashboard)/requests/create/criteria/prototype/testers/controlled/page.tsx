@@ -171,6 +171,7 @@ export default function Page() {
 										onChange={e => {
 											setPassword(e.target.value)
 										}}
+										label='Password'
 									/>
 								</Collapse>
 								<Flex justify='flex-end'>
