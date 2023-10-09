@@ -37,3 +37,6 @@
 	border-radius: 50%;
 	background: var(--mantine-color-brand-4);
 }
+.check svg {
+	fill: var(--mantine-color-yellow-1);
+}

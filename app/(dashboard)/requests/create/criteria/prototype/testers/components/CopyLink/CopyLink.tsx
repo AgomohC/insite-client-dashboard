@@ -1,7 +1,7 @@
 import styles from "./CopyLink.module.css"
 import { useClipboard } from "@mantine/hooks"
 import { Flex, Text } from "@mantine/core"
-import { Copy } from "@/public/icons"
+import { Copy, Success } from "@/public/icons"
 export default function CopyLink({ value }: { value: string }) {
 	const clipboard = useClipboard({ timeout: 2000 })
 	return (
@@ -29,7 +29,7 @@ export default function CopyLink({ value }: { value: string }) {
 					clipboard.copy(value)
 				}}
 			>
-				<Copy />
+				{clipboard.copied ? <Success /> : <Copy />}
 				{clipboard.copied ? "Copied" : "Copy link"}
 			</Flex>
 		</Flex>
