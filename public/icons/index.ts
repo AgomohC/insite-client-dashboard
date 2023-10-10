@@ -45,6 +45,11 @@ import Location from "./Location.svg"
 import Age from "./Age.svg"
 import Education from "./Education.svg"
 import LocationBig from "./LocationBig.svg"
+import Open from "./Open.svg"
+import UploadCloud from "./UploadCloud.svg"
+import PDF from "./PDF.svg"
+import PDFDownload from "./PDFDownload.svg"
+import TrashFilled from "./TrashFilled.svg"
 export {
 	Age,
 	Arrow,
@@ -78,6 +83,9 @@ export {
 	Mobile,
 	New,
 	NumberScale,
+	Open,
+	PDF,
+	PDFDownload,
 	Prototype,
 	Record,
 	Rename,
@@ -93,4 +101,6 @@ export {
 	Testers,
 	Timed,
 	Trash,
+	TrashFilled,
+	UploadCloud,
 }
