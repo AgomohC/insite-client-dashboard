@@ -1,8 +1,19 @@
 :root {
 	font-size: 62.5%;
 }
+
+*,
+::after,
+::before {
+	font-family: var(--font-inter);
+}
+
 body {
 	background: var(--mantine-color-gray-1) !important;
 	background-color: var(--mantine-color-gray-1) !important;
 	font-family: var(--font-inter);
+}
+
+.react-pdf__Page__annotations {
+	max-height: 0 !important;
 }
