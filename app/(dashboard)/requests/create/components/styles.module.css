@@ -346,3 +346,60 @@
 .arrow svg {
 	fill: var(--mantine-color-brand-4);
 }
+.nda {
+	border-radius: 1.6rem;
+	border: 1px solid #f7f7f7;
+}
+.ndaBody {
+	border-radius: 1.6rem;
+	background: var(--mantine-color-brand-8);
+}
+.modalOverlay {
+	z-index: 400;
+}
+.modalInner {
+	padding-top: 9rem;
+	z-index: 400;
+	padding-left: 0;
+	padding-right: 0;
+}
+.modalContent {
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+.modalContent,
+.modalContent div {
+	background: transparent;
+	width: 100%;
+	max-width: 114rem;
+}
+
+.modalNav {
+	cursor: pointer;
+}
+.modalNav svg {
+	fill: var(--mantine-color-white);
+	rotate: 90deg;
+}
+.modalBody {
+	background: transparent;
+	padding: 0;
+}
+.modalBtn {
+	height: 5.6rem;
+	padding: 1.6rem;
+	border-radius: 5.2rem;
+	border: 1px solid var(--mantine-color-gray-3);
+	background: transparent;
+	color: var(--mantine-color-white);
+	font-size: 1.4rem;
+	font-weight: 600;
+	line-height: 1.82rem;
+}
+.btnInner {
+	gap: 1.6rem;
+}
+.btnSection {
+	margin: 0;
+}
